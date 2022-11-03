@@ -32,28 +32,24 @@ typedef struct condition_amelioration_cabane /// cabane
 {
     int eau;
     int electricite;
-    int route;
 }t_amelioration_C; /// C -> Cabane
 
 typedef struct condition_amelioration_maison /// maison
 {
     int eau;
     int electricite;
-    int route;
 }t_amelioration_M; /// M -> Maison
 
 typedef struct condition_amelioration_immeuble /// immeuble
 {
     int eau;
     int electricite;
-    int route;
 }t_amelioration_I; /// I -> Immeuble
 
 typedef struct condition_amelioration_Gratte_ciel /// Gratte-ciel
 {
     int eau;
     int electricite;
-    int route;
 }t_amelioration_GC; /// GC -> Gratte-ciel
 
 typedef struct batiment
