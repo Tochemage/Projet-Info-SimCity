@@ -25,7 +25,6 @@ typedef struct condition_amelioration_terrain_vague /// terrain vague
 {
     int eau;
     int electricite;
-    int route;
 }t_amelioration_TV; /// TV -> Terrain Vague
 
 typedef struct condition_amelioration_cabane /// cabane
