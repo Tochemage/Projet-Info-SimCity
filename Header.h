@@ -14,7 +14,7 @@ void AllegroInit();
 
 typedef struct ville
 {
-    char nom[30];
+    char nom[40];
     int argent;
     int nbr_habitants;
     int impots;
