@@ -72,20 +72,23 @@ typedef struct batiment_habitation
     int conso_elec;
     int nbr_hab;
     int nbr_cases_x = 3;
-    int nbr_cases_y = 3
+    int nbr_cases_y = 3;
+    int cout = 1000;
 }t_batiment_hab;
 
 typedef struct batiment_production
 {
     int type; /// 0->centrale, 1->chateau eau
     int nbr_cases_x = 4;
-    int nbr_cases_y = 6
+    int nbr_cases_y = 6;
+    int cout = 100000;
 }t_batiment_prod;
 
 typedef struct route
 {
     int nbr_cases_x = 1;
-    int nbr_cases_y = 1
+    int nbr_cases_y = 1;
+    int cout = 10;
 }t_route;
 
 
