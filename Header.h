@@ -12,4 +12,6 @@ BITMAP* recup_sprites( BITMAP*scr,int w,int h,int startx,int starty,int col,int 
 
 void AllegroInit();
 
+
+
 #endif //V1_HEADER_H
