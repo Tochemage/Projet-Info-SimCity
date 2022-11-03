@@ -21,13 +21,40 @@ typedef struct ville
     int mode_jeu; /// 0 communiste, 1 capitaliste
 }t_ville;
 
-typedef struct condition_amelioration
+typedef struct condition_amelioration_terrain_vague /// terrain vague
 {
-    int type; /// 0->terrain vague, 1->cabane, 2->maison, 3->immeuble, 4->Gratte-ciel
     int eau;
     int electricite;
     int route;
-}t_amelioration;
+}t_amelioration_TV; /// TV -> Terrain Vague
+
+typedef struct condition_amelioration_cabane /// cabane
+{
+    int eau;
+    int electricite;
+    int route;
+}t_amelioration_C; /// C -> Cabane
+
+typedef struct condition_amelioration_maison /// maison
+{
+    int eau;
+    int electricite;
+    int route;
+}t_amelioration_M; /// M -> Maison
+
+typedef struct condition_amelioration_immeuble /// immeuble
+{
+    int eau;
+    int electricite;
+    int route;
+}t_amelioration_I; /// I -> Immeuble
+
+typedef struct condition_amelioration_Gratte_ciel /// Gratte-ciel
+{
+    int eau;
+    int electricite;
+    int route;
+}t_amelioration_GC; /// GC -> Gratte-ciel
 
 typedef struct batiment
 {
