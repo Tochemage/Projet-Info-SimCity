@@ -9,11 +9,9 @@
 #include <allegro.h>
 #include <stdbool.h>
 
-BITMAP* recup_sprites( BITMAP*scr,int w,int h,int startx,int starty,int col,int element);
 
-void AllegroInit();
+//////////////////////structures///////////////////::::
 
-void menu(BITMAP* doublebuffer);
 
 typedef struct ville
 {
@@ -26,44 +24,44 @@ typedef struct ville
 
 typedef struct chateau_eau
 {
-    int capa = 5000;
+    int capa;
     int nbr_utilisation;
 }t_eau;
 
 typedef struct centrale
 {
-    int electricite = 5000;
+    int electricite;
     int nbr_utilisation;
 }t_electricite;
 
 typedef struct condition_amelioration_terrain_vague /// terrain vague
 {
-    int eau = 0;
-    int electricite = 0;
+    int eau;
+    int electricite;
 }t_amelioration_TV; /// TV -> Terrain Vague
 
 typedef struct condition_amelioration_cabane /// cabane
 {
-    int eau = 10;
-    int electricite = 10;
+    int eau;
+    int electricite;
 }t_amelioration_C; /// C -> Cabane
 
 typedef struct condition_amelioration_maison /// maison
 {
-    int eau = 40;
-    int electricite = 40;
+    int eau;
+    int electricite;
 }t_amelioration_M; /// M -> Maison
 
 typedef struct condition_amelioration_immeuble /// immeuble
 {
-    int eau = 50;
-    int electricite = 50;
+    int eau;
+    int electricite;
 }t_amelioration_I; /// I -> Immeuble
 
 typedef struct condition_amelioration_Gratte_ciel /// Gratte-ciel
 {
-    int eau = 900;
-    int electricite = 900;
+    int eau;
+    int electricite;
 }t_amelioration_GC; /// GC -> Gratte-ciel
 
 typedef struct batiment_habitation
@@ -74,25 +72,54 @@ typedef struct batiment_habitation
     int conso_eau;
     int conso_elec;
     int nbr_hab;
-    int nbr_cases_x = 3;
-    int nbr_cases_y = 3;
-    int cout = 1000;
+    int nbr_cases_x;
+    int nbr_cases_y;
+    int cout;
 }t_batiment_hab;
 
 typedef struct batiment_production
 {
     int type; /// 0->centrale, 1->chateau eau
-    int nbr_cases_x = 4;
-    int nbr_cases_y = 6;
-    int cout = 100000;
+    int nbr_cases_x;
+    int nbr_cases_y;
+    int cout;
 }t_batiment_prod;
 
 typedef struct route
 {
-    int nbr_cases_x = 1;
-    int nbr_cases_y = 1;
-    int cout = 10;
+    int nbr_cases_x ;
+    int nbr_cases_y ;
+    int cout ;
 }t_route;
 
+
+
+//////////////////////////PROTO//////////////////////////////////
+
+BITMAP* recup_sprites( BITMAP*scr,int w,int h,int startx,int starty,int col,int element);
+
+void AllegroInit();
+
+void menu(BITMAP* doublebuffer);
+
+t_eau* initchateaueau();
+
+t_electricite * initelec();
+
+t_amelioration_TV * initamelTV();
+
+t_amelioration_C * initamelcab();
+
+t_amelioration_M * initamelmaison();
+
+t_amelioration_I * initamelimmeuble();
+
+t_amelioration_GC * initamelGC();
+
+t_batiment_hab * initbathab();
+
+t_batiment_prod * initbatprod();
+
+t_route * initroute();
 
 #endif //V1_HEADER_H

@@ -41,16 +41,34 @@ void menu(BITMAP* doublebuffer)
         {
             case 0:
             {
-
+                //menu principal
                 break;
             }
             case 1:
             {
+                //lancer une game
                 break;
             }
             case 2:
             {
+                //charger une sauvegarde
                 break;
+            }
+            case 3:
+            {
+                //regles
+                break;
+            }
+            case 4:
+            {
+                //credits
+                break;
+            }
+            case 5:
+            {
+                //quitter
+                allegro_exit();
+                exit(0);
             }
         }
 
