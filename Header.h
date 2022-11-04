@@ -7,10 +7,13 @@
 
 #include <stdio.h>
 #include <allegro.h>
+#include <stdbool.h>
 
 BITMAP* recup_sprites( BITMAP*scr,int w,int h,int startx,int starty,int col,int element);
 
 void AllegroInit();
+
+void menu(BITMAP* doublebuffer);
 
 typedef struct ville
 {

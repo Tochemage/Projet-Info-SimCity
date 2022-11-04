@@ -11,6 +11,9 @@ int main() {
 
     while(!key[KEY_ESC])
     {
+        menu(doublebuffer);
+
+
 
         show_mouse(doublebuffer);
         blit(doublebuffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
