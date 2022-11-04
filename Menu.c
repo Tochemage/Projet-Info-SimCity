@@ -13,7 +13,7 @@ void menu(BITMAP* doublebuffer)
 
     for (int i=0; i<120; i++)
     {
-        sprintf(nomfichier,"images/menu/backmenu/back%d.bmp",i+1);
+        sprintf(nomfichier,"images/menu/backmenu/back (%d).bmp",i+1);
 
         fondmenu[i] = load_bitmap(nomfichier,NULL);
         if (!fondmenu[i])
@@ -28,14 +28,14 @@ void menu(BITMAP* doublebuffer)
         if (menutmpimg>=5)
         {
             menutmpimg=0;
-            menuimg-=1;
+            menuimg++;
 
-            if (menuimg<=0)
+            if (menuimg>=120)
             {
-                menuimg=119;
+                menuimg=0;
             }
         }
-        blit(fondmenu[menuimg],doublebuffer,0,0,0,0,1280,960);
+        blit(fondmenu[menuimg],doublebuffer,0,0,0,0,1920,1080);
 
         switch(undermenu)
         {
