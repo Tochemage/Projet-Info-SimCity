@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/S1 Ing2/graphes/projet/versionning/Projet-Info-SimCity/cmake-build-debug",
-		"source" : "D:/S1 Ing2/graphes/projet/versionning/Projet-Info-SimCity"
+		"build" : "C:/ECE/ECE ing2/S1/Theorie des graphs/ECE CITY S3/cmake-build-debug",
+		"source" : "C:/ECE/ECE ing2/S1/Theorie des graphs/ECE CITY S3"
 	},
 	"version" : 
 	{
