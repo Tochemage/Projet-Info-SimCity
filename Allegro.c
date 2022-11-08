@@ -48,7 +48,7 @@ void AllegroInit()
     install_mouse();
 
     set_color_depth(desktop_color_depth());
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1280,960,0,0)!=0)
+    if (set_gfx_mode(GFX_AUTODETECT_FULLSCREEN,1920,1080,0,0)!=0)
     {
         allegro_message("prb gfx mode");
         allegro_exit();

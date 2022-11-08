@@ -19,7 +19,7 @@ void menu(BITMAP* doublebuffer)
 
     for (int i=0; i<120; i++)
     {
-        sprintf(nomfichier,"images/menu/backmenu/back%d.bmp",i+1);
+        sprintf(nomfichier,"images/menu/backmenu/back (%d).bmp",i+1);
 
         fondmenu[i] = load_bitmap(nomfichier,NULL);
         if (!fondmenu[i])
@@ -100,84 +100,85 @@ void menu(BITMAP* doublebuffer)
         if (menutmpimg>=5)
         {
             menutmpimg=0;
-            menuimg--;
+            menuimg++;
 
-            if (menuimg<=0)
+            if (menuimg>=120)
             {
-                menuimg=119;
+                menuimg=0;
             }
         }
-        blit(fondmenu[menuimg],doublebuffer,0,0,0,0,1280,960);
+        blit(fondmenu[menuimg],doublebuffer,0,0,0,0,1920,1080);
 
         switch(undermenu)
         {
             case 0:
             {
                 //menu principal
-                draw_sprite(doublebuffer,logo,470,50);//logo
-                if((mouse_y>430 && mouse_y<565)&&(mouse_x>330 && mouse_x<630))//bouton lancer partie
+                draw_sprite(doublebuffer,logo,778,80);//logo
+
+                if((mouse_y>460 && mouse_y<581)&&(mouse_x>637 && mouse_x<920))//bouton lancer partie
                 {
-                    draw_sprite(doublebuffer,buttonstart[1],330,430);
+                    draw_sprite(doublebuffer,buttonstart[1],630,460);
                     if(mouse_b&1==1)
                     {
-                        draw_sprite(doublebuffer,buttonstart[2],330,430);
+                        draw_sprite(doublebuffer,buttonstart[2],630,460);
                     }
                 }
                 else
                 {
-                    draw_sprite(doublebuffer,buttonstart[0],330,430);
+                    draw_sprite(doublebuffer,buttonstart[0],630,460);
                 }
 
-                if((mouse_y>430 && mouse_y<535)&&(mouse_x>680 && mouse_x<980))//bouton charger une partie
+                if((mouse_y>460 && mouse_y<581)&&(mouse_x>987 && mouse_x<1270))//bouton charger une partie
                 {
-                    draw_sprite(doublebuffer,buttonload[1],680,430);
+                    draw_sprite(doublebuffer,buttonload[1],980,460);
                     if(mouse_b&1==1)
                     {
-                        draw_sprite(doublebuffer,buttonload[2],680,430);
+                        draw_sprite(doublebuffer,buttonload[2],980,460);
                     }
                 }
                 else
                 {
-                    draw_sprite(doublebuffer,buttonload[0],680,430);
+                    draw_sprite(doublebuffer,buttonload[0],980,460);
                 }
 
-                if((mouse_y>600 && mouse_y<735)&&(mouse_x>330 && mouse_x<630))//bouton regles
+                if((mouse_y>630 && mouse_y<758)&&(mouse_x>637 && mouse_x<920))//bouton regles
                 {
-                    draw_sprite(doublebuffer,buttonrules[1],330,600);
+                    draw_sprite(doublebuffer,buttonrules[1],630,630);
                     if(mouse_b&1==1)
                     {
-                        draw_sprite(doublebuffer,buttonrules[2],330,600);
+                        draw_sprite(doublebuffer,buttonrules[2],630,630);
                     }
                 }
                 else
                 {
-                    draw_sprite(doublebuffer,buttonrules[0],330,600);
+                    draw_sprite(doublebuffer,buttonrules[0],630,630);
                 }
 
-                if((mouse_y>600 && mouse_y<735)&&(mouse_x>680 && mouse_x<980))//bouton credits
+                if((mouse_y>637 && mouse_y<758)&&(mouse_x>987 && mouse_x<1270))//bouton credits
                 {
-                    draw_sprite(doublebuffer,buttoncredits[1],680,600);
+                    draw_sprite(doublebuffer,buttoncredits[1],980,630);
                     if(mouse_b&1==1)
                     {
-                        draw_sprite(doublebuffer,buttoncredits[2],680,600);
+                        draw_sprite(doublebuffer,buttoncredits[2],980,630);
                     }
                 }
                 else
                 {
-                    draw_sprite(doublebuffer,buttoncredits[0],680,600);
+                    draw_sprite(doublebuffer,buttoncredits[0],980,630);
                 }
 
-                if((mouse_y>760 && mouse_y<895)&&(mouse_x>520 && mouse_x<820))//bouton exit
+                if((mouse_y>797 && mouse_y<918)&&(mouse_x>817 && mouse_x<1100))//bouton exit
                 {
-                    draw_sprite(doublebuffer,buttonexit[1],520,760);
+                    draw_sprite(doublebuffer,buttonexit[1],810,790);
                     if(mouse_b&1==1)
                     {
-                        draw_sprite(doublebuffer,buttonexit[2],520,760);
+                        draw_sprite(doublebuffer,buttonexit[2],810,790);
                     }
                 }
                 else
                 {
-                    draw_sprite(doublebuffer,buttonexit[0],520,760);
+                    draw_sprite(doublebuffer,buttonexit[0],810,790);
                 }
 
 
