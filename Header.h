@@ -8,6 +8,12 @@
 #include <stdio.h>
 #include <allegro.h>
 
+/////////////
+///DEFINE///
+///////////
+
+#define NB_COLONNES 45
+#define NB_LIGNES 35
 
 
 ///////////////////
@@ -103,7 +109,7 @@ typedef struct industrie
 typedef struct jeu_cases
 {
     int type_case;      //0:vide    1:route(canalisation ou ligne tension)     3:industrie     4:habitation
-    int num_color;      //numero de coloration si on a besoin (par ex pour les differentes cases d'un meme batiment)
+    int num_color;      //numero de coloration si on a besoin, a 0 par defaut (par ex pour les differentes cases d'un meme batiment)
     int num_case_x;     //numero de case en x et en y pour retrouver la case si besoin
     int num_case_y;
     t_habitation* habitation;    //Structure habitation s'il y en a une, sinon pointe sur NULL
@@ -124,7 +130,7 @@ typedef struct possesions_joueur
 typedef struct ville
 {
     char nom[30];
-    int argent;
+    long int argent;
     int nbr_habitants;
     int capa_eau;
     int capa_elec;
@@ -132,7 +138,7 @@ typedef struct ville
     int nbr_mois_jeu;
     int mode_jeu;           // 0 communiste, 1 capitaliste
     t_possessions possesions;
-    t_case map[35][45];     //A FAIRE : matrice de structures cases pout toutes les cases de la map
+    t_case** map;     //Matrice de structures cases pout toutes les cases de la map (map[i][j], i=lignes, j=colonnes)
 }t_ville;
 
 
@@ -140,10 +146,21 @@ typedef struct ville
 ///PROTOTYPES///
 ///////////////
 
-void AllegroInit();
-void menu(BITMAP* doublebuffer);
+//INITIALISATIONS//
+void sp_init_struct(t_ville* maVille, t_infos* infos);
+void init_struct_ville (t_ville* maVille);
+t_case** creation_matrice();
+void remplissage_matrice(t_case** maMatrice);
 
+
+
+//ALLEGRO//
+void AllegroInit();
 BITMAP* recup_sprites( BITMAP*scr,int w,int h,int startx,int starty,int col,int element);
+
+
+//MENU//
+void menu(BITMAP* doublebuffer);
 
 
 #endif //V1_HEADER_H
