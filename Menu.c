@@ -16,6 +16,7 @@ void menu(BITMAP* doublebuffer)
     char nomfichier[100];
     int menutmpimg=0, menuimg=119;
     int undermenu=0;
+    int cmpt=0,incmpt=0;
 
     for (int i=0; i<120; i++)
     {
@@ -94,7 +95,7 @@ void menu(BITMAP* doublebuffer)
 
 
 
-    while(!key[KEY_ESC])
+    while(!key[KEY_ESC] && undermenu!=6)
     {
         menutmpimg++;
         if (menutmpimg>=5)
@@ -116,12 +117,26 @@ void menu(BITMAP* doublebuffer)
                 //menu principal
                 draw_sprite(doublebuffer,logo,778,80);//logo
 
+                if(incmpt==1)
+                {
+                    cmpt++;
+                }
+
+
                 if((mouse_y>460 && mouse_y<581)&&(mouse_x>637 && mouse_x<920))//bouton lancer partie
                 {
                     draw_sprite(doublebuffer,buttonstart[1],630,460);
                     if(mouse_b&1==1)
                     {
                         draw_sprite(doublebuffer,buttonstart[2],630,460);
+                        incmpt=1;
+
+                    }
+                    if(cmpt>=30)
+                    {
+                        incmpt=0;
+                        cmpt=0;
+                        undermenu=1;
                     }
                 }
                 else
@@ -135,6 +150,13 @@ void menu(BITMAP* doublebuffer)
                     if(mouse_b&1==1)
                     {
                         draw_sprite(doublebuffer,buttonload[2],980,460);
+                        incmpt=1;
+                    }
+                    if(cmpt>=30)
+                    {
+                        incmpt=0;
+                        cmpt=0;
+                        undermenu=2;
                     }
                 }
                 else
@@ -148,6 +170,13 @@ void menu(BITMAP* doublebuffer)
                     if(mouse_b&1==1)
                     {
                         draw_sprite(doublebuffer,buttonrules[2],630,630);
+                        incmpt=1;
+                    }
+                    if(cmpt>=30)
+                    {
+                        incmpt=0;
+                        cmpt=0;
+                        undermenu=3;
                     }
                 }
                 else
@@ -161,6 +190,13 @@ void menu(BITMAP* doublebuffer)
                     if(mouse_b&1==1)
                     {
                         draw_sprite(doublebuffer,buttoncredits[2],980,630);
+                        incmpt=1;
+                    }
+                    if(cmpt>=30)
+                    {
+                        incmpt=0;
+                        cmpt=0;
+                        undermenu=4;
                     }
                 }
                 else
@@ -174,6 +210,13 @@ void menu(BITMAP* doublebuffer)
                     if(mouse_b&1==1)
                     {
                         draw_sprite(doublebuffer,buttonexit[2],810,790);
+                        incmpt=1;
+                    }
+                    if(cmpt>=30)
+                    {
+                        incmpt=0;
+                        cmpt=0;
+                        undermenu=5;
                     }
                 }
                 else
@@ -187,22 +230,38 @@ void menu(BITMAP* doublebuffer)
             }
             case 1:
             {
+                if(key[KEY_E])
+                {
+                    undermenu=0;
+                }
                 //lancer une game
                 break;
             }
             case 2:
             {
                 //charger une sauvegarde
+                if(key[KEY_E])
+                {
+                    undermenu=0;
+                }
                 break;
             }
             case 3:
             {
                 //regles
+                if(key[KEY_E])
+                {
+                    undermenu=0;
+                }
                 break;
             }
             case 4:
             {
                 //credits
+                if(key[KEY_E])
+                {
+                    undermenu=0;
+                }
                 break;
             }
             case 5:
