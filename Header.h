@@ -8,12 +8,20 @@
 #include <stdio.h>
 #include <allegro.h>
 
+/**------------------------------------------------------------------------------------------------------------------**/
+/**------------------------------------------------------------------------------------------------------------------**/
+
+
 /////////////
 ///DEFINE///
 ///////////
 
 #define NB_COLONNES 45
 #define NB_LIGNES 35
+
+
+/**------------------------------------------------------------------------------------------------------------------**/
+/**------------------------------------------------------------------------------------------------------------------**/
 
 
 ///////////////////
@@ -90,11 +98,14 @@ typedef struct informations_jeu
 }t_infos;
 
 
+/**------------------------------------------------------------------------------------------------------------------**/
+
 ///Structures du joueur///
 typedef struct habitation
 {
-    int type;           // 0->terrain vague(0 hab), 1->cabane(10 hab), 2->maison(50 hab), 3->immeuble(100 hab), 4->Gratte-ciel(1000 hab)
     char nom_bat[20];
+    int num_bat;        //Numéro de batiment pour pouvoir comparer aux autres cases et savoir sur quelles cases est un batiment, commence à 1 (defaut:0)
+    int type;           // 0:vide   1:terrain vague(0 hab), 2:cabane(10 hab), 3:maison(50 hab), 4:immeuble(100 hab), 5:Gratte-ciel(1000 hab)
     int conso_eau;      //=Nb habitants de ce type d'habitation
     int conso_elec;     //=Nb habitants de ce type d'habitation
     int nbr_hab;
@@ -102,7 +113,8 @@ typedef struct habitation
 
 typedef struct industrie
 {
-    int type;           // 5:chateau eau    6:Centrale electrique
+    int num_bat;
+    int type;           // 0:vide   6:chateau eau    7:Centrale electrique
     char nom_bat[20];
 }t_industrie;
 
@@ -142,6 +154,10 @@ typedef struct ville
 }t_ville;
 
 
+/**------------------------------------------------------------------------------------------------------------------**/
+/**------------------------------------------------------------------------------------------------------------------**/
+
+
 /////////////////
 ///PROTOTYPES///
 ///////////////
@@ -149,6 +165,7 @@ typedef struct ville
 //INITIALISATIONS//
 void sp_init_struct(t_ville* maVille, t_infos* infos);
 void init_struct_ville (t_ville* maVille);
+void init_struct_infos (t_infos* mesInfos);
 t_case** creation_matrice();
 void remplissage_matrice(t_case** maMatrice);
 
