@@ -56,10 +56,10 @@ RM = "C:\Program Files\JetBrains\CLion 2022.2.1\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\ECE\ECE ing2\S1\Theorie des graphs\ECE CITY S3"
+CMAKE_SOURCE_DIR = "C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\ECE\ECE ing2\S1\Theorie des graphs\ECE CITY S3\cmake-build-debug"
+CMAKE_BINARY_DIR = "C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3\cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\ECE\ECE ing2\S1\Theorie des graphs\ECE CITY S3\cmake-build-debug\CMakeFiles" "C:\ECE\ECE ing2\S1\Theorie des graphs\ECE CITY S3\cmake-build-debug\\CMakeFiles\progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3\cmake-build-debug\CMakeFiles" "C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3\cmake-build-debug\\CMakeFiles\progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\ECE\ECE ing2\S1\Theorie des graphs\ECE CITY S3\cmake-build-debug\CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3\cmake-build-debug\CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -176,6 +176,30 @@ Menu.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\v1.dir\build.make CMakeFiles/v1.dir/Menu.c.s
 .PHONY : Menu.c.s
 
+initstrcut.obj: initstrcut.c.obj
+.PHONY : initstrcut.obj
+
+# target to build an object file
+initstrcut.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\v1.dir\build.make CMakeFiles/v1.dir/initstrcut.c.obj
+.PHONY : initstrcut.c.obj
+
+initstrcut.i: initstrcut.c.i
+.PHONY : initstrcut.i
+
+# target to preprocess a source file
+initstrcut.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\v1.dir\build.make CMakeFiles/v1.dir/initstrcut.c.i
+.PHONY : initstrcut.c.i
+
+initstrcut.s: initstrcut.c.s
+.PHONY : initstrcut.s
+
+# target to generate assembly for a file
+initstrcut.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\v1.dir\build.make CMakeFiles/v1.dir/initstrcut.c.s
+.PHONY : initstrcut.c.s
+
 main.obj: main.c.obj
 .PHONY : main.obj
 
@@ -215,6 +239,9 @@ help:
 	@echo ... Menu.obj
 	@echo ... Menu.i
 	@echo ... Menu.s
+	@echo ... initstrcut.obj
+	@echo ... initstrcut.i
+	@echo ... initstrcut.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

@@ -52,10 +52,10 @@ RM = "C:\Program Files\JetBrains\CLion 2022.2.1\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\ECE\ECE ing2\S1\Theorie des graphs\ECE CITY S3"
+CMAKE_SOURCE_DIR = "C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\ECE\ECE ing2\S1\Theorie des graphs\ECE CITY S3\cmake-build-debug"
+CMAKE_BINARY_DIR = "C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3\cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/v1.dir/depend.make
@@ -71,50 +71,65 @@ include CMakeFiles/v1.dir/flags.make
 CMakeFiles/v1.dir/main.c.obj: CMakeFiles/v1.dir/flags.make
 CMakeFiles/v1.dir/main.c.obj: ../main.c
 CMakeFiles/v1.dir/main.c.obj: CMakeFiles/v1.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\ECE\ECE ing2\S1\Theorie des graphs\ECE CITY S3\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/v1.dir/main.c.obj"
-	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/v1.dir/main.c.obj -MF CMakeFiles\v1.dir\main.c.obj.d -o CMakeFiles\v1.dir\main.c.obj -c "C:\ECE\ECE ing2\S1\Theorie des graphs\ECE CITY S3\main.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/v1.dir/main.c.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/v1.dir/main.c.obj -MF CMakeFiles\v1.dir\main.c.obj.d -o CMakeFiles\v1.dir\main.c.obj -c "C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3\main.c"
 
 CMakeFiles/v1.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/v1.dir/main.c.i"
-	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\ECE\ECE ing2\S1\Theorie des graphs\ECE CITY S3\main.c" > CMakeFiles\v1.dir\main.c.i
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3\main.c" > CMakeFiles\v1.dir\main.c.i
 
 CMakeFiles/v1.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/v1.dir/main.c.s"
-	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\ECE\ECE ing2\S1\Theorie des graphs\ECE CITY S3\main.c" -o CMakeFiles\v1.dir\main.c.s
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3\main.c" -o CMakeFiles\v1.dir\main.c.s
 
 CMakeFiles/v1.dir/Allegro.c.obj: CMakeFiles/v1.dir/flags.make
 CMakeFiles/v1.dir/Allegro.c.obj: ../Allegro.c
 CMakeFiles/v1.dir/Allegro.c.obj: CMakeFiles/v1.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\ECE\ECE ing2\S1\Theorie des graphs\ECE CITY S3\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/v1.dir/Allegro.c.obj"
-	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/v1.dir/Allegro.c.obj -MF CMakeFiles\v1.dir\Allegro.c.obj.d -o CMakeFiles\v1.dir\Allegro.c.obj -c "C:\ECE\ECE ing2\S1\Theorie des graphs\ECE CITY S3\Allegro.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/v1.dir/Allegro.c.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/v1.dir/Allegro.c.obj -MF CMakeFiles\v1.dir\Allegro.c.obj.d -o CMakeFiles\v1.dir\Allegro.c.obj -c "C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3\Allegro.c"
 
 CMakeFiles/v1.dir/Allegro.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/v1.dir/Allegro.c.i"
-	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\ECE\ECE ing2\S1\Theorie des graphs\ECE CITY S3\Allegro.c" > CMakeFiles\v1.dir\Allegro.c.i
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3\Allegro.c" > CMakeFiles\v1.dir\Allegro.c.i
 
 CMakeFiles/v1.dir/Allegro.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/v1.dir/Allegro.c.s"
-	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\ECE\ECE ing2\S1\Theorie des graphs\ECE CITY S3\Allegro.c" -o CMakeFiles\v1.dir\Allegro.c.s
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3\Allegro.c" -o CMakeFiles\v1.dir\Allegro.c.s
 
 CMakeFiles/v1.dir/Menu.c.obj: CMakeFiles/v1.dir/flags.make
 CMakeFiles/v1.dir/Menu.c.obj: ../Menu.c
 CMakeFiles/v1.dir/Menu.c.obj: CMakeFiles/v1.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\ECE\ECE ing2\S1\Theorie des graphs\ECE CITY S3\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/v1.dir/Menu.c.obj"
-	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/v1.dir/Menu.c.obj -MF CMakeFiles\v1.dir\Menu.c.obj.d -o CMakeFiles\v1.dir\Menu.c.obj -c "C:\ECE\ECE ing2\S1\Theorie des graphs\ECE CITY S3\Menu.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/v1.dir/Menu.c.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/v1.dir/Menu.c.obj -MF CMakeFiles\v1.dir\Menu.c.obj.d -o CMakeFiles\v1.dir\Menu.c.obj -c "C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3\Menu.c"
 
 CMakeFiles/v1.dir/Menu.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/v1.dir/Menu.c.i"
-	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\ECE\ECE ing2\S1\Theorie des graphs\ECE CITY S3\Menu.c" > CMakeFiles\v1.dir\Menu.c.i
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3\Menu.c" > CMakeFiles\v1.dir\Menu.c.i
 
 CMakeFiles/v1.dir/Menu.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/v1.dir/Menu.c.s"
-	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\ECE\ECE ing2\S1\Theorie des graphs\ECE CITY S3\Menu.c" -o CMakeFiles\v1.dir\Menu.c.s
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3\Menu.c" -o CMakeFiles\v1.dir\Menu.c.s
+
+CMakeFiles/v1.dir/initstrcut.c.obj: CMakeFiles/v1.dir/flags.make
+CMakeFiles/v1.dir/initstrcut.c.obj: ../initstrcut.c
+CMakeFiles/v1.dir/initstrcut.c.obj: CMakeFiles/v1.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/v1.dir/initstrcut.c.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/v1.dir/initstrcut.c.obj -MF CMakeFiles\v1.dir\initstrcut.c.obj.d -o CMakeFiles\v1.dir\initstrcut.c.obj -c "C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3\initstrcut.c"
+
+CMakeFiles/v1.dir/initstrcut.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/v1.dir/initstrcut.c.i"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3\initstrcut.c" > CMakeFiles\v1.dir\initstrcut.c.i
+
+CMakeFiles/v1.dir/initstrcut.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/v1.dir/initstrcut.c.s"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3\initstrcut.c" -o CMakeFiles\v1.dir\initstrcut.c.s
 
 # Object files for target v1
 v1_OBJECTS = \
 "CMakeFiles/v1.dir/main.c.obj" \
 "CMakeFiles/v1.dir/Allegro.c.obj" \
-"CMakeFiles/v1.dir/Menu.c.obj"
+"CMakeFiles/v1.dir/Menu.c.obj" \
+"CMakeFiles/v1.dir/initstrcut.c.obj"
 
 # External object files for target v1
 v1_EXTERNAL_OBJECTS =
@@ -122,11 +137,12 @@ v1_EXTERNAL_OBJECTS =
 v1.exe: CMakeFiles/v1.dir/main.c.obj
 v1.exe: CMakeFiles/v1.dir/Allegro.c.obj
 v1.exe: CMakeFiles/v1.dir/Menu.c.obj
+v1.exe: CMakeFiles/v1.dir/initstrcut.c.obj
 v1.exe: CMakeFiles/v1.dir/build.make
 v1.exe: CMakeFiles/v1.dir/linklibs.rsp
 v1.exe: CMakeFiles/v1.dir/objects1.rsp
 v1.exe: CMakeFiles/v1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\ECE\ECE ing2\S1\Theorie des graphs\ECE CITY S3\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable v1.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable v1.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\v1.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -138,6 +154,6 @@ CMakeFiles/v1.dir/clean:
 .PHONY : CMakeFiles/v1.dir/clean
 
 CMakeFiles/v1.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "C:\ECE\ECE ing2\S1\Theorie des graphs\ECE CITY S3" "C:\ECE\ECE ing2\S1\Theorie des graphs\ECE CITY S3" "C:\ECE\ECE ing2\S1\Theorie des graphs\ECE CITY S3\cmake-build-debug" "C:\ECE\ECE ing2\S1\Theorie des graphs\ECE CITY S3\cmake-build-debug" "C:\ECE\ECE ing2\S1\Theorie des graphs\ECE CITY S3\cmake-build-debug\CMakeFiles\v1.dir\DependInfo.cmake" --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3" "C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3" "C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3\cmake-build-debug" "C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3\cmake-build-debug" "C:\Users\Clement\OneDrive\Documents\Travail\Superieur\ECE\Cours\ING2\Infomatique\Projet S3 - ECE City\Projet S3 - ECE City V3\cmake-build-debug\CMakeFiles\v1.dir\DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/v1.dir/depend
 

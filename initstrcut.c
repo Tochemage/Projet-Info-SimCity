@@ -4,19 +4,23 @@
 
 #include "Header.h"
 
-
+/////////////////////////////////////////////////
 ///SOUS-PROGRAMME GENERAL DES INITIALISATIONS///
+///////////////////////////////////////////////
+
 void sp_init_struct(t_ville* maVille, t_infos* infos)           //Appels de tous les sp d'initialisation
 {
     init_struct_ville(maVille);
+    init_struct_infos(infos);
 }
 
 
 /**------------------------------------------------------------------------------------------------------------------**/
 
-//INITIALISATION STRUCT VILLE//
+///INITIALISATION STRUCT VILLE///
 void init_struct_ville (t_ville* maVille)
 {
+    ///General///
     maVille->argent = 500000;
     maVille->nbr_habitants = 0;
     maVille->capa_eau = 0;
@@ -25,7 +29,7 @@ void init_struct_ville (t_ville* maVille)
     maVille->nbr_mois_jeu = 0;
     maVille->mode_jeu = -1;
 
-    //Possessions//
+    ///Possessions///
     maVille->possesions.nb_chateauEau = 0;
     maVille->possesions.nb_centraleElec = 0;
     maVille->possesions.nb_terrainVague = 0;
@@ -34,7 +38,7 @@ void init_struct_ville (t_ville* maVille)
     maVille->possesions.nb_immeuble = 0;
     maVille->possesions.nb_gratteCiel = 0;
 
-    //Matrice map//
+    ///Matrice map///
     maVille->map = creation_matrice();
     remplissage_matrice(maVille->map);
 }
@@ -42,7 +46,7 @@ void init_struct_ville (t_ville* maVille)
 
 /**------------------------------------------------------------------------------------------------------------------**/
 
-//CREATION MATRICE//
+///CREATION MATRICE///
 t_case** creation_matrice()
 {
     int i=0;
@@ -72,7 +76,7 @@ t_case** creation_matrice()
 
 /**------------------------------------------------------------------------------------------------------------------**/
 
-//REMPLISSAGE MATRICE//
+///REMPLISSAGE MATRICE///
 void remplissage_matrice(t_case** maMatrice)
 {
     int i=0, j=0;
@@ -85,24 +89,71 @@ void remplissage_matrice(t_case** maMatrice)
     {
         for(j=0; j<colonnes; j++)
         {
+            ///Type case et coloration///
+            maMatrice[i][j].type_case = 0;
+            maMatrice[i][j].num_color = 0;
+
+            ///Coordonnees cases///
             maMatrice[i][j].num_case_x = indice_colonne;
             maMatrice[i][j].num_case_y = indice_ligne;
             indice_colonne+=20;
+            //printf("%d-%d ", maMatrice[i][j].num_case_x, maMatrice[i][j].num_case_y);
+
+            ///Structure habitation///
+            maMatrice[i][j].habitation = (t_habitation*) malloc(sizeof (t_habitation));
+            maMatrice[i][j].habitation->num_bat = 0;
+            maMatrice[i][j].habitation->type = 0;
+            maMatrice[i][j].habitation->conso_eau = 0;
+            maMatrice[i][j].habitation->conso_elec = 0;
+            maMatrice[i][j].habitation->nbr_hab = 0;
+
+            ///Structure industrie///
+            maMatrice[i][j].industrie = (t_industrie*) malloc(sizeof (t_industrie));
+            maMatrice[i][j].industrie->num_bat = 0;
+            maMatrice[i][j].industrie->type = 0;
         }
         indice_ligne+=20;
         indice_colonne=0;
+        //printf("\n");
     }
 }
 
 /**------------------------------------------------------------------------------------------------------------------**/
 
-//INITIALISATION STRUCT INFOS VILLE//
-/*
-void init_struct_ville (t_infos* mesInfos)
+///INITIALISATION STRUCT INFOS VILLE///
+void init_struct_infos (t_infos* mesInfos)
 {
+    ///Habitations///
+    mesInfos->I_habitations.cout = 1000;
+    mesInfos->I_habitations.nb_case_x = 3;
+    mesInfos->I_habitations.nb_case_y = 3;
 
-}*/
+    ///Industries///
+    mesInfos->I_industries.cout = 100000;
+    mesInfos->I_industries.nb_case_x = 4;
+    mesInfos->I_industries.nb_case_y = 6;
 
+    ///Routes, canalisations, lignes électriques///
+    mesInfos->I_routes.cout = 10;
+    mesInfos->I_routes.nb_case_x = 1;
+    mesInfos->I_routes.nb_case_y = 1;
+
+    ///Evolution des habitations///
+    mesInfos->I_evolution.Evol_terrain_vague.eau = 0;
+    mesInfos->I_evolution.Evol_terrain_vague.electricite = 0;
+
+    mesInfos->I_evolution.Evol_cabane.eau = 10;
+    mesInfos->I_evolution.Evol_cabane.electricite = 10;
+
+    mesInfos->I_evolution.Evol_maison.eau = 50;
+    mesInfos->I_evolution.Evol_maison.electricite = 50;
+
+    mesInfos->I_evolution.Evol_immeuble.eau = 100;
+    mesInfos->I_evolution.Evol_immeuble.electricite = 100;
+
+    mesInfos->I_evolution.Evol_gratte_ciel.eau = 1000;
+    mesInfos->I_evolution.Evol_gratte_ciel.electricite = 1000;
+}
 
 
 
@@ -110,95 +161,3 @@ void init_struct_ville (t_infos* mesInfos)
 
 /**------------------------------------------------------------------------------------------------------------------**/
 /**------------------------------------------------------------------------------------------------------------------**/
-
-/*
-t_eau* initchateaueau()
-{
-    t_eau* chateaueau=(t_eau*)malloc(sizeof(t_eau));
-    chateaueau->capa=5000;
-    chateaueau->nbr_utilisation=0;
-    return chateaueau;
-}
-
-t_electricite * initelec()
-{
-    t_electricite * centrale=(t_electricite*)malloc(sizeof(t_electricite));
-    centrale->nbr_utilisation=0;
-    centrale->electricite=5000;
-    return centrale;
-}
-
-t_amelioration_TV * initamelTV()
-{
-    t_amelioration_TV * conditionamelterrain=(t_amelioration_TV*)malloc(sizeof(t_amelioration_TV));
-    conditionamelterrain->electricite=0;
-    conditionamelterrain->eau=0;
-    return conditionamelterrain;
-}
-
-t_amelioration_C * initamelcab()
-{
-    t_amelioration_C * conditionamelcab=(t_amelioration_C*)malloc(sizeof(t_amelioration_C));
-    conditionamelcab->electricite=10;
-    conditionamelcab->eau=10;
-    return conditionamelcab;;
-}
-
-t_amelioration_M * initamelmaison()
-{
-    t_amelioration_M * conditionamelmaison=(t_amelioration_M*)malloc(sizeof(t_amelioration_M));
-    conditionamelmaison->eau=40;
-    conditionamelmaison->electricite=40;
-    return conditionamelmaison;
-}
-
-t_amelioration_I * initamelimmeuble()
-{
-    t_amelioration_I *conditionamelimmeuble=(t_amelioration_I*)malloc(sizeof(t_amelioration_I));
-    conditionamelimmeuble->electricite=50;
-    conditionamelimmeuble->eau=50;
-    return conditionamelimmeuble;
-}
-
-t_amelioration_GC * initamelGC()
-{
-    t_amelioration_GC * conditionamelGC=(t_amelioration_GC*)malloc(sizeof(t_amelioration_GC));
-    conditionamelGC->electricite=900;
-    conditionamelGC->eau=900;
-    return conditionamelGC;
-}
-
-t_batiment_hab * initbathab()
-{
-    t_batiment_hab * bathab=(t_batiment_hab*)malloc(sizeof(t_batiment_hab));
-    bathab->taille=0;
-    bathab->type=0;
-    bathab->cout=1000;
-    bathab->conso_eau=0;
-    bathab->conso_elec=0;
-    bathab->nbr_hab=0;
-    bathab->nom_bat[0]='\0';
-    bathab->nbr_cases_x=3;
-    bathab->nbr_cases_y=4;
-    return bathab;
-}
-
-t_batiment_prod * initbatprod()
-{
-    t_batiment_prod * batprod=(t_batiment_prod*)malloc(sizeof(t_batiment_prod));
-    batprod->cout=100000;
-    batprod->type=-1;
-    batprod->nbr_cases_y=6;
-    batprod->nbr_cases_x=4;
-    return batprod;
-}
-
-t_route * initroute()
-{
-    t_route *route=(t_route*)malloc(sizeof(t_route));
-    route->cout=10;
-    route->nbr_cases_x=1;
-    route->nbr_cases_y=1;
-    return route;
-}
-*/
