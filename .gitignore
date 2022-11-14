@@ -17,3 +17,5 @@ coverage
 /cmake-build-debug/cmake_install.cmake
 /cmake-build-debug/CMakeCache.txt
 /cmake-build-debug/v1.exe
+/cmake-build-debug/Makefile
+/cmake-build-debug/v1.cbp
