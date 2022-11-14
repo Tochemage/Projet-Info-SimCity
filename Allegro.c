@@ -54,5 +54,9 @@ void AllegroInit()
         allegro_exit();
         exit(EXIT_FAILURE);
     }
+
+    install_sound(DIGI_AUTODETECT, MIDI_AUTODETECT, 0);
+
+    enable_hardware_cursor();
 }
 

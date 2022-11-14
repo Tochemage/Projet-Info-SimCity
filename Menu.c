@@ -18,6 +18,15 @@ void menu(BITMAP* doublebuffer)
     int undermenu=0;
     int cmpt=0,incmpt=0;
 
+    int songplaying=0;
+
+    SAMPLE *menusong = load_wav("sons/menusong.wav");
+    if (!menusong)
+    {
+        allegro_message("error loading");
+        exit(EXIT_FAILURE);
+    }
+
     for (int i=0; i<120; i++)
     {
         sprintf(nomfichier,"images/menu/backmenu/back (%d).bmp",i+1);
@@ -97,6 +106,13 @@ void menu(BITMAP* doublebuffer)
 
     while(!key[KEY_ESC] && undermenu!=6)
     {
+        /*
+        if(songplaying==0)
+        {
+            play_sample(menusong,100,123,1000,1);
+            songplaying=1;
+        }*/
+
         menutmpimg++;
         if (menutmpimg>=5)
         {
