@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <allegro.h>
+#include <time.h>
 
 /**------------------------------------------------------------------------------------------------------------------**/
 /**------------------------------------------------------------------------------------------------------------------**/
@@ -18,6 +19,7 @@
 
 #define NB_COLONNES 45
 #define NB_LIGNES 35
+#define SAISIE_MAX 20
 
 
 /**------------------------------------------------------------------------------------------------------------------**/
@@ -177,7 +179,12 @@ BITMAP* recup_sprites( BITMAP*scr,int w,int h,int startx,int starty,int col,int 
 
 
 //MENU//
-void menu(BITMAP* doublebuffer);
+void menu(BITMAP* doublebuffer,int* startgame,t_ville* ville);
+
+//JEU//
+void bouclejeu(BITMAP* doublebuffer);
+
+
 
 
 #endif //V1_HEADER_H

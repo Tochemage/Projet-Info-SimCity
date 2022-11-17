@@ -4,7 +4,7 @@
 
 #include "Header.h"
 
-void menu(BITMAP* doublebuffer)
+void menu(BITMAP* doublebuffer, int *startgame,t_ville* ville)
 {
     BITMAP* fondmenu[120];
     BITMAP* logo;
@@ -17,15 +17,7 @@ void menu(BITMAP* doublebuffer)
     int menutmpimg=0, menuimg=119;
     int undermenu=0;
     int cmpt=0,incmpt=0;
-
-    int songplaying=0;
-
-    SAMPLE *menusong = load_wav("sons/menusong.wav");
-    if (!menusong)
-    {
-        allegro_message("error loading");
-        exit(EXIT_FAILURE);
-    }
+    int nameset=0;
 
     for (int i=0; i<120; i++)
     {
@@ -106,12 +98,6 @@ void menu(BITMAP* doublebuffer)
 
     while(!key[KEY_ESC] && undermenu!=6)
     {
-        /*
-        if(songplaying==0)
-        {
-            play_sample(menusong,100,123,1000,1);
-            songplaying=1;
-        }*/
 
         menutmpimg++;
         if (menutmpimg>=5)
@@ -153,6 +139,7 @@ void menu(BITMAP* doublebuffer)
                         incmpt=0;
                         cmpt=0;
                         undermenu=1;
+
                     }
                 }
                 else
@@ -246,11 +233,22 @@ void menu(BITMAP* doublebuffer)
             }
             case 1:
             {
+                //lancer une game
                 if(key[KEY_E])
                 {
                     undermenu=0;
                 }
-                //lancer une game
+
+                //saisir nom de ville
+
+                //permettre de skip le nom de ville
+                if(key[KEY_LCONTROL])
+                {
+                    strcpy(ville->nom,"Paris");
+                    *startgame=1;
+                    undermenu=6;
+                }
+
                 break;
             }
             case 2:
@@ -283,8 +281,8 @@ void menu(BITMAP* doublebuffer)
             case 5:
             {
                 //quitter
-                allegro_exit();
-                exit(0);
+                undermenu=6;
+                break;
             }
         }
 
@@ -292,6 +290,7 @@ void menu(BITMAP* doublebuffer)
         rest(5);
         show_mouse(doublebuffer);
         blit(doublebuffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+
     }
 
 
@@ -300,3 +299,4 @@ void menu(BITMAP* doublebuffer)
         destroy_bitmap(fondmenu[i]);
     }
 }
+

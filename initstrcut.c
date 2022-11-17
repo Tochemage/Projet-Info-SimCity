@@ -69,7 +69,7 @@ t_case** creation_matrice()
         }
     }
 
-    printf("\n\nMatrice creee avec %d lignes et %d colonnes", lignes, colonnes);
+    //printf("\n\nMatrice creee avec %d lignes et %d colonnes", lignes, colonnes);
 
     return maMatrice;
 }

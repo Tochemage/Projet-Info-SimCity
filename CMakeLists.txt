@@ -3,7 +3,7 @@ project(v1 C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(v1 main.c Header.h Allegro.c Menu.c initstrcut.c)
+add_executable(v1 main.c Header.h Allegro.c Menu.c initstrcut.c Bouclejeu.c)
 
 target_link_libraries(v1 mingw32 alleg44)
 

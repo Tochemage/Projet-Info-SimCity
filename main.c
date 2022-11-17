@@ -15,25 +15,29 @@ int main() {
     ///Declarations de variables///
     t_ville* ville = (t_ville*)malloc(sizeof(t_ville));
     t_infos* infoVille = (t_infos*)malloc(sizeof(t_infos));
+    int ingame;
+    int *startgame=NULL;
+    startgame=&ingame;
+
 
     ///Initialisations///
     sp_init_struct(ville, infoVille);   //Sp d'initialisation des structures
 
 
-    while(!key[KEY_ESC])
+
+    menu(doublebuffer,startgame,ville);
+    printf("out menu");
+    if(ingame==1)
     {
-        menu(doublebuffer);
-
-
-
-        show_mouse(doublebuffer);
-        blit(doublebuffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
-        rest(10);
+        bouclejeu(doublebuffer);
     }
+
+        printf("out jeu");
+
 
     destroy_bitmap(doublebuffer);
     allegro_exit();
-
+    //getchar();
 
 
     return 0;
