@@ -183,6 +183,7 @@ void menu(BITMAP* doublebuffer,int* startgame,t_ville* ville);
 
 //JEU//
 void bouclejeu(BITMAP* doublebuffer);
+int detectionClick(int click_x, int click_y);
 
 
 
