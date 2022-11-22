@@ -26,13 +26,13 @@ int main() {
 
 
     menu(doublebuffer,startgame,ville);
-    printf("out menu");
+    //printf("out menu");
+
     if(ingame==1)
     {
-        bouclejeu(doublebuffer);
+        bouclejeu(doublebuffer,ville);
     }
-
-        printf("out jeu");
+    //printf("out jeu");
 
 
     destroy_bitmap(doublebuffer);

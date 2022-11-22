@@ -18,6 +18,7 @@ void menu(BITMAP* doublebuffer, int *startgame,t_ville* ville)
     int undermenu=0;
     int cmpt=0,incmpt=0;
     int nameset=0;
+    int gamemode=0;
 
     for (int i=0; i<120; i++)
     {
@@ -237,6 +238,14 @@ void menu(BITMAP* doublebuffer, int *startgame,t_ville* ville)
                 if(key[KEY_E])
                 {
                     undermenu=0;
+                }
+
+                if (gamemode==0)//choix du mod de jeu
+                {
+                    if(key[KEY_RCONTROL])//skip le mode de jeu
+                    {
+                        gamemode=1;
+                    }
                 }
 
                 //saisir nom de ville

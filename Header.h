@@ -182,7 +182,7 @@ BITMAP* recup_sprites( BITMAP*scr,int w,int h,int startx,int starty,int col,int 
 void menu(BITMAP* doublebuffer,int* startgame,t_ville* ville);
 
 //JEU//
-void bouclejeu(BITMAP* doublebuffer);
+void bouclejeu(BITMAP* doublebuffer,t_ville* ville);
 int detectionClick(int click_x, int click_y);
 
 
