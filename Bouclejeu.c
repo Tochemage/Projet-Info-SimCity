@@ -18,7 +18,15 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos)
 
     ///BITMAP///
     BITMAP* platjeu;
+    BITMAP* fondjeu;
+
+    ///batiments///
     BITMAP* maison;
+    BITMAP* cabane;
+    BITMAP* immeuble;
+    BITMAP* gratteciel;
+    BITMAP* usine;
+    BITMAP* chateaudeau;
 
     //Joueur
     int click_x=-1, click_y=-1, selection=-1;
@@ -30,10 +38,45 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos)
         exit(EXIT_FAILURE);
     }
 
+    fondjeu = load_bitmap("images/jeu/plateau/fondjeu.bmp",NULL);
+    if (!fondjeu)
+    {
+        allegro_message("pas pu trouver fond du jeu");
+        exit(EXIT_FAILURE);
+    }
+
     maison = load_bitmap("images/jeu/plateau/sprite_maison.bmp",NULL);
-    if (!platjeu)
+    if (!maison)
     {
         allegro_message("pas pu trouver maison de jeu");
+        exit(EXIT_FAILURE);
+    }
+
+    cabane = load_bitmap("images/jeu/plateau/sprite_cabane.bmp",NULL);
+    if (!cabane)
+    {
+        allegro_message("pas pu trouver cabane de jeu");
+        exit(EXIT_FAILURE);
+    }
+
+    immeuble = load_bitmap("images/jeu/plateau/sprite_immeuble.bmp",NULL);
+    if (!immeuble)
+    {
+        allegro_message("pas pu trouver immeuble de jeu");
+        exit(EXIT_FAILURE);
+    }
+
+    gratteciel = load_bitmap("images/jeu/plateau/gratte_ciel.bmp",NULL);
+    if (!gratteciel)
+    {
+        allegro_message("pas pu trouver gratte ciel de jeu");
+        exit(EXIT_FAILURE);
+    }
+
+    usine = load_bitmap("images/jeu/plateau/sprite_usine.bmp",NULL);
+    if (!usine)
+    {
+        allegro_message("pas pu trouver usine de jeu");
         exit(EXIT_FAILURE);
     }
 
@@ -48,8 +91,8 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos)
             printf("%d\n",cmptmois);
             clktot=0;
         }
-
-        blit(platjeu,doublebuffer,0,0,0,0,1920,1080);
+        blit(fondjeu,doublebuffer,0,0,0,0,1920,1080);
+        masked_blit(platjeu,doublebuffer,0,0,0,0,1920,1080);
 
         ///INTERACTIONS JOUEUR///
         if(mouse_b&1==1)    //Permet de savoir sur quelle icone le joueur a cliqué
@@ -72,6 +115,28 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos)
             }
         }
 
+        for(int i=0;i<40;i++)
+        {
+            for(int j=0;j<40;j++)
+            {
+                if((mouse_y>234+i*20 && mouse_y<234+20+i*20)&&(mouse_x>740+j*20 && mouse_x<740+20+j*20))
+                {
+                    draw_sprite(doublebuffer,maison,maVille->map[i][j].num_case_x-30,maVille->map[i][j].num_case_y-30);
+                    if(mouse_b&1==1 && maVille->map[i][j].habitation->type==0)
+                    {
+                        for(int k=0;i<3;i++)
+                        {
+                            for (int l = 0; j < 3; j++) {
+                                maVille->map[i-1+k][j-1+l].habitation->type = -1;
+                            }
+
+                        }
+                        maVille->map[i][j].habitation->type=1;
+                    }
+                }
+            }
+        }
+
 
         /*
         //detection pour placer un bat
@@ -88,19 +153,19 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos)
                 }
             }
         }
-
+        */
 
         for(int i=0;i<40;i++)
         {
             for(int j=0;j<40;j++)
             {
-                if(ville->map[i][j].habitation->type!=0)
+                if(maVille->map[i][j].habitation->type==1)
                 {
-                    //draw_sprite(doublebuffer,maison,ville->map[i][j].num_case_x,ville->map[i][j].num_case_y);
+                    draw_sprite(doublebuffer,maison,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y);
                 }
             }
         }
-        */
+
         //mettre en play pause avec un bouton
 
         /*
