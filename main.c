@@ -26,18 +26,18 @@ int main() {
 
 
     menu(doublebuffer,startgame,ville);
-    //printf("out menu");
+    printf("out menu");
 
     if(ingame==1)
     {
         bouclejeu(doublebuffer, ville, infoVille);
     }
-    //printf("out jeu");
+    printf("out jeu");
 
 
     destroy_bitmap(doublebuffer);
     allegro_exit();
-    //getchar();
+    getchar();
 
 
     return 0;
