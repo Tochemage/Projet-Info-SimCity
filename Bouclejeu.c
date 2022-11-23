@@ -4,7 +4,8 @@
 
 #include "Header.h"
 
-void bouclejeu(BITMAP* doublebuffer,t_ville* ville)
+
+void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos)
 {
     ///Variables///
     //Temps
@@ -13,13 +14,13 @@ void bouclejeu(BITMAP* doublebuffer,t_ville* ville)
     int cmptmois=0;
     int cmptpause=0;
 
-    int batselected;// 0 pour une habitation
+    //Joueur
+    int click_x=-1, click_y=-1, selection=-1;
 
     ///BITMAP///
     BITMAP* platjeu;
 
-    //Joueur
-    int click_x=-1, click_y=-1, selection=-1;
+
 
     platjeu = load_bitmap("images/jeu/plateau/platjeu.bmp",NULL);
     if (!platjeu)
@@ -42,8 +43,29 @@ void bouclejeu(BITMAP* doublebuffer,t_ville* ville)
 
         blit(platjeu,doublebuffer,0,0,0,0,1920,1080);
 
+        ///INTERACTIONS JOUEUR///
+        if(mouse_b&1==1)    //Permet de savoir sur quelle icone le joueur a cliqué
+        {
+            ///Detection et analyse
+            click_x = mouse_x;
+            click_y = mouse_y;
+            selection = detectionClick(click_x, click_y);
+            //(-1:Rien    0:Construire un batiment   1:Données bat  2:VisionEtage   3:Sauvegarde    4:quitter)
+
+            ///Appel des sous-programmes
+            if(selection==0)    //Construction batiment
+            {
+                //appel fonction constru bat en envoyant click_x et click_y pour detecter ensuite quel bat il veut construire
+            }
+            if(selection==1)    //Voir données batiment sur cette case
+            {
+                recherche_case_selec(maVille, click_x, click_y);
+                //Afficher données batiment case
+            }
+        }
 
 
+        /*
         //detection pour placer un bat
         if((mouse_y>234 && mouse_y<234+799)&&(mouse_x>740 && mouse_x<740+799))
         {
@@ -53,11 +75,12 @@ void bouclejeu(BITMAP* doublebuffer,t_ville* ville)
                 {
                     if((mouse_y>234+i*20 && mouse_y<234+20+i*20)&&(mouse_x>740+i*20 && mouse_x<740+20+i*20) && mouse_b&1==1)
                     {
-                        ville->map[i][j].habitation->type=batselected;
+                        maVille->map[i][j].habitation->type=batselected;
                     }
                 }
             }
         }
+         */
 
         //mettre en play pause avec un bouton
 
@@ -75,6 +98,7 @@ void bouclejeu(BITMAP* doublebuffer,t_ville* ville)
          }
         */
 
+        ///QUITTER LE JEU///
         if(key[KEY_RCONTROL])//quitter le jeu (fin du prog)
         {
             ingame=0;
@@ -130,3 +154,29 @@ int detectionClick(int click_x, int click_y)    //Renvoie un entier permettant d
     }
     */
 }
+
+
+
+t_case* recherche_case_selec(t_ville* ville, int click_x, int click_y)
+{
+    int i=0, j=0;
+    int indice_ligne=0, indice_colonne=0;
+    int lignes = NB_LIGNES;
+    int colonnes = NB_COLONNES;
+    t_case* case_recherchee;
+
+    for(i=0; i<lignes; i++)
+    {
+        for (j = 0; j < colonnes; j++)
+        {
+            if((ville->map[i][j].num_case_x > click_x) && (ville->map[i][j].num_case_y > click_y))
+            {
+                case_recherchee = &ville->map[i-1][j-1];
+            }
+        }
+    }
+
+    return case_recherchee;
+}
+
+

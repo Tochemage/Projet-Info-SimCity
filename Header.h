@@ -17,8 +17,8 @@
 ///DEFINE///
 ///////////
 
-#define NB_COLONNES 45
-#define NB_LIGNES 35
+#define NB_COLONNES 40
+#define NB_LIGNES 40
 #define SAISIE_MAX 20
 
 
@@ -122,6 +122,7 @@ typedef struct industrie
 
 typedef struct jeu_cases
 {
+    int num_case;       //Numéro de case en faisant par lignes [0;1599]
     int type_case;      //0:vide    1:route(canalisation ou ligne tension)     3:industrie     4:habitation
     int num_color;      //numero de coloration si on a besoin, a 0 par defaut (par ex pour les differentes cases d'un meme batiment)
     int num_case_x;     //numero de case en x et en y pour retrouver la case si besoin
@@ -182,8 +183,9 @@ BITMAP* recup_sprites( BITMAP*scr,int w,int h,int startx,int starty,int col,int 
 void menu(BITMAP* doublebuffer,int* startgame,t_ville* ville);
 
 //JEU//
-void bouclejeu(BITMAP* doublebuffer,t_ville* ville);
+void bouclejeu(BITMAP* doublebuffer, t_ville* ville, t_infos* infos);
 int detectionClick(int click_x, int click_y);
+t_case* recherche_case_selec(t_ville* ville, int click_x, int click_y);
 
 
 

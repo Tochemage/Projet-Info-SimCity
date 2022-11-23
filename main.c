@@ -2,7 +2,7 @@
 
 int main() {
 
-
+    /*
     AllegroInit();
 
     BITMAP *doublebuffer;
@@ -10,7 +10,7 @@ int main() {
     doublebuffer=create_bitmap(SCREEN_W,SCREEN_H);
     clear_bitmap(doublebuffer);
 
-
+    */
 
     ///Declarations de variables///
     t_ville* ville = (t_ville*)malloc(sizeof(t_ville));
@@ -24,13 +24,13 @@ int main() {
     sp_init_struct(ville, infoVille);   //Sp d'initialisation des structures
 
 
-
+    /*
     menu(doublebuffer,startgame,ville);
     //printf("out menu");
 
     if(ingame==1)
     {
-        bouclejeu(doublebuffer,ville);
+        bouclejeu(doublebuffer, ville, infoVille);
     }
     //printf("out jeu");
 
@@ -38,7 +38,7 @@ int main() {
     destroy_bitmap(doublebuffer);
     allegro_exit();
     //getchar();
-
+    */
 
     return 0;
 }END_OF_MAIN()

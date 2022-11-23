@@ -84,20 +84,25 @@ void remplissage_matrice(t_case** maMatrice)
     int colonnes=NB_COLONNES;
     int indice_ligne=0;
     int indice_colonne=0;
+    int numero_case=0;
 
     for(i=0; i<lignes; i++)
     {
         for(j=0; j<colonnes; j++)
         {
+            ///Num case///
+            maMatrice[i][j].num_case=numero_case;
+            numero_case++;
+
             ///Type case et coloration///
             maMatrice[i][j].type_case = 0;
             maMatrice[i][j].num_color = 0;
 
             ///Coordonnees cases///
-            maMatrice[i][j].num_case_x = indice_colonne;
-            maMatrice[i][j].num_case_y = indice_ligne;
+            maMatrice[i][j].num_case_x = 740+indice_colonne;
+            maMatrice[i][j].num_case_y = 234+indice_ligne;
             indice_colonne+=20;
-            //printf("%d-%d ", maMatrice[i][j].num_case_x, maMatrice[i][j].num_case_y);
+            printf("%d:%d-%d ", maMatrice[i][j].num_case, maMatrice[i][j].num_case_x, maMatrice[i][j].num_case_y);
 
             ///Structure habitation///
             maMatrice[i][j].habitation = (t_habitation*) malloc(sizeof (t_habitation));
