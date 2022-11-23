@@ -14,7 +14,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos)
     int cmptmois=0;
     int cmptpause=0;
 
-    int batselected=0;// 1 pour une habitation
+    int batselected=0;// 1 pour une habitation, 2 pour une route, 3 pour une usine, 4 pour un chateau d'eau, 5 pour sup
 
     ///BITMAP///
     BITMAP* platjeu;
@@ -27,6 +27,8 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos)
     BITMAP* gratteciel;
     BITMAP* usine;
     BITMAP* chateaudeau;
+
+    BITMAP* route;
 
     //Joueur
     int click_x=-1, click_y=-1, selection=-1;
@@ -80,6 +82,13 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos)
         exit(EXIT_FAILURE);
     }
 
+    route = load_bitmap("images/jeu/plateau/route.bmp",NULL);
+    if (!route)
+    {
+        allegro_message("pas pu trouver route de jeu");
+        exit(EXIT_FAILURE);
+    }
+
     while(!key[KEY_ESC] && ingame==1)
     {
         ///PRISE DU TEMPS 1///
@@ -115,45 +124,62 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos)
             }
         }
 
-        for(int i=0;i<40;i++)
+        if(key[KEY_P])
         {
-            for(int j=0;j<40;j++)
-            {
-                if((mouse_y>234+i*20 && mouse_y<234+20+i*20)&&(mouse_x>740+j*20 && mouse_x<740+20+j*20))
-                {
-                    draw_sprite(doublebuffer,maison,maVille->map[i][j].num_case_x-30,maVille->map[i][j].num_case_y-30);
-                    if(mouse_b&1==1 && maVille->map[i][j].habitation->type==0)
-                    {
-                        for(int k=0;i<3;i++)
-                        {
-                            for (int l = 0; j < 3; j++) {
-                                maVille->map[i-1+k][j-1+l].habitation->type = -1;
-                            }
-
-                        }
-                        maVille->map[i][j].habitation->type=1;
-                    }
-                }
-            }
+            batselected++;
+        }
+        if(batselected==6)
+        {
+            batselected=0;
         }
 
 
-        /*
-        //detection pour placer un bat
-        if((mouse_y>234 && mouse_y<234+799)&&(mouse_x>740 && mouse_x<740+799) && batselected!=0)
+        if(batselected==1)
         {
             for(int i=0;i<40;i++)
             {
                 for(int j=0;j<40;j++)
                 {
-                    if((mouse_y>234+i*20 && mouse_y<234+20+i*20)&&(mouse_x>740+i*20 && mouse_x<740+20+i*20) && mouse_b&1==1)
+                    if((mouse_y>234+i*20 && mouse_y<234+20+i*20)&&(mouse_x>740+j*20 && mouse_x<740+20+j*20) && i!=0 && i!=39 && j!=0 && j!=39)
                     {
-                        ville->map[i][j].habitation->type=batselected;
+                        draw_sprite(doublebuffer,cabane,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y);
+                        if(mouse_b&1==1 && maVille->map[i][j].habitation->type==0 && maVille->map[i-1][j].habitation->type==0 && maVille->map[i+1][j].habitation->type==0 && maVille->map[i-1][j-1].habitation->type==0 && maVille->map[i+1][j+1].habitation->type==0 && maVille->map[i][j-1].habitation->type==0 && maVille->map[i][j+1].habitation->type==0 && maVille->map[i-1][j+1].habitation->type==0 && maVille->map[i+1][j-1].habitation->type==0)
+                        {
+                            for(int k=0;i<3;i++)
+                            {
+                                for (int l = 0; j < 3; j++) {
+                                    maVille->map[i-1+k][j-1+l].habitation->type = -1;
+                                }
+
+                            }
+                            maVille->map[i][j].habitation->type=1;
+                            batselected=0;
+                        }
                     }
                 }
             }
         }
-        */
+
+        if(batselected==2)
+        {
+            for(int i=0;i<40;i++)
+            {
+                for(int j=0;j<40;j++)
+                {
+                    if((mouse_y>234+i*20 && mouse_y<234+20+i*20)&&(mouse_x>740+j*20 && mouse_x<740+20+j*20))
+                    {
+                        draw_sprite(doublebuffer,route,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y);
+                        if(mouse_b&1==1 && maVille->map[i][j].habitation->type==0)
+                        {
+                            maVille->map[i][j].habitation->type=7;
+                            batselected=0;
+                        }
+                    }
+                }
+            }
+        }
+
+
 
         for(int i=0;i<40;i++)
         {
@@ -161,8 +187,31 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos)
             {
                 if(maVille->map[i][j].habitation->type==1)
                 {
+                    draw_sprite(doublebuffer,cabane,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y);
+                }
+                if(maVille->map[i][j].habitation->type==7)
+                {
+                    draw_sprite(doublebuffer,route,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y);
+                }
+                if(maVille->map[i][j].habitation->type==2)
+                {
                     draw_sprite(doublebuffer,maison,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y);
                 }
+                if(maVille->map[i][j].habitation->type==3)
+                {
+                    draw_sprite(doublebuffer,immeuble,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y);
+                }
+                if(maVille->map[i][j].habitation->type==4)
+                {
+                    draw_sprite(doublebuffer,gratteciel,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y);
+                }
+                if(maVille->map[i][j].habitation->type==5)
+                {
+                    draw_sprite(doublebuffer,usine,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y);
+                }
+
+
+
             }
         }
 

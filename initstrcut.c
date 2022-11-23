@@ -101,7 +101,7 @@ void remplissage_matrice(t_case** maMatrice)
             ///Coordonnees cases///
             maMatrice[i][j].num_case_x = 740+indice_colonne;
             maMatrice[i][j].num_case_y = 234+indice_ligne;
-            indice_colonne+=20;
+            indice_colonne+=19;
             //printf("%d:%d-%d ", maMatrice[i][j].num_case, maMatrice[i][j].num_case_x, maMatrice[i][j].num_case_y);
 
             ///Structure habitation///
@@ -117,7 +117,7 @@ void remplissage_matrice(t_case** maMatrice)
             maMatrice[i][j].industrie->num_bat = 0;
             maMatrice[i][j].industrie->type = 0;
         }
-        indice_ligne+=20;
+        indice_ligne+=19;
         indice_colonne=0;
         //printf("\n");
     }
