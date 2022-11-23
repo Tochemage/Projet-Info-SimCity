@@ -187,6 +187,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* ville, t_infos* infos);
 int detectionClick(int click_x, int click_y);
 t_case* recherche_case_selec(t_ville* ville, int click_x, int click_y);
 
+int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* maison,BITMAP* cabane,BITMAP* immeuble,BITMAP* gratteciel,BITMAP* usine,BITMAP* chateaudeau,BITMAP* route);
 
 
 
