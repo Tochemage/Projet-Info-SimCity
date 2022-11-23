@@ -13,6 +13,7 @@ void menu(BITMAP* doublebuffer, int *startgame,t_ville* ville)
     BITMAP* buttonrules[3];
     BITMAP* buttoncredits[3];
     BITMAP* buttonexit[3];
+    BITMAP* buttonmodedejeu[3];
     char nomfichier[100];
     int menutmpimg=0, menuimg=119;
     int undermenu=0;
@@ -88,6 +89,18 @@ void menu(BITMAP* doublebuffer, int *startgame,t_ville* ville)
         sprintf(nomfichier,"images/menu/logo/buttonexit%d.bmp",i+1);
 
         buttonexit[i] = load_bitmap(nomfichier,NULL);
+        if (!buttonexit[i])
+        {
+            allegro_message("pas pu trouver %s",nomfichier);
+            exit(EXIT_FAILURE);
+        }
+    }
+
+    for (int i=0; i<3; i++)
+    {
+        sprintf(nomfichier,"images/menu/mode de jeu/choixmodedejeu%d.bmp",i+1);
+
+        buttonmodedejeu[i] = load_bitmap(nomfichier,NULL);
         if (!buttonexit[i])
         {
             allegro_message("pas pu trouver %s",nomfichier);
@@ -242,8 +255,29 @@ void menu(BITMAP* doublebuffer, int *startgame,t_ville* ville)
 
                 if (gamemode==0)//choix du mod de jeu
                 {
+                    draw_sprite(doublebuffer,buttonmodedejeu[0],0,0);
+                    if((mouse_y>334 && mouse_y<685)&&(mouse_x>85 && mouse_x<930))//bouton exit
+                    {
+                        draw_sprite(doublebuffer,buttonmodedejeu[1],0,0);
+                        if(mouse_b&1==1)
+                        {
+                            ville->mode_jeu=0;
+                            gamemode=1;
+                        }
+                    }
+                    if((mouse_y>334 && mouse_y<685)&&(mouse_x>1000 && mouse_x<1800))//bouton exit
+                    {
+                        draw_sprite(doublebuffer,buttonmodedejeu[2],0,0);
+                        if(mouse_b&1==1)
+                        {
+                            ville->mode_jeu=1;
+                            gamemode=1;
+                        }
+                    }
+
                     if(key[KEY_RCONTROL])//skip le mode de jeu
                     {
+                        ville->mode_jeu=0;//communiste par default
                         gamemode=1;
                     }
                 }
