@@ -205,6 +205,11 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos)
             }
          }
 
+
+         ///CALCUL DONNEES JOUEUR///
+         ingame = calcul_data_J(maVille, infos);
+
+
         ///QUITTER LE JEU///
         if(key[KEY_RCONTROL])//quitter le jeu (fin du prog)
         {

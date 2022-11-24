@@ -2,7 +2,7 @@
 // Created by Clement on 17/11/2022.
 //
 
-/*
+
 #include "Header.h"
 
 ///CALCUL DES DONNEES DU JOUEUR///
@@ -24,15 +24,30 @@ int calcul_data_J(t_ville* ville, t_infos* infos)      //Le programme va prendre
 
     ville->nbr_habitants = hab_terrainVague + hab_cabane + hab_maison + hab_immeuble + hab_gratteCiel;
 
-    ///Calcul Capacité eau totale de la ville///
-
+    ///Calcul capacité eau totale de la ville///
+    ville->capa_eau = ville->possesions.nb_chateauEau * infos->I_industries.capa_totale_eau;
 
     ///Calcul capacité électrique totale de la ville///
-
+    ville->capa_elec = ville->possesions.nb_centraleElec * infos->I_industries.capa_totale_elec;
 
     ///Calcul Victoire ou Défaite///
+    //Victoire : 50M ECEflouz ou 50 000 hab
+    //Défaite : 0 ECEflouz
 
+    //Victoire
+    if(ville->argent >= 50000000  ||  ville->nbr_habitants >= 50000)
+    {
+        //Allegro : affichage victoire                                             NEED ALLEGRO
+        return 0;   ////Mettre la variable ingame à 0 pour quitter la boucle de jeu
+    }
+
+    //Défaite
+    if(ville->argent <= 0)
+    {
+        //Allegro : affichage défaite                                               NEED ALLEGRO
+        return 0;   //Mettre la variable ingame à 0 pour quitter la boucle de jeu
+    }
+
+    return 1;   //On renvoie 1 pour que la variable ingame soit à 1 et que la boucle de jeu continue
 
 }
-
- */

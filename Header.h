@@ -172,7 +172,7 @@ typedef struct ville
 ///PROTOTYPES///
 ///////////////
 
-//INITIALISATIONS//
+///INITIALISATIONS///
 void sp_init_struct(t_ville* maVille, t_infos* infos);
 void init_struct_ville (t_ville* maVille);
 void init_struct_infos (t_infos* mesInfos);
@@ -181,21 +181,25 @@ void remplissage_matrice(t_case** maMatrice);
 
 
 
-//ALLEGRO//
+///ALLEGRO///
 void AllegroInit();
 BITMAP* recup_sprites( BITMAP*scr,int w,int h,int startx,int starty,int col,int element);
 
 
-//MENU//
+///MENU///
 void menu(BITMAP* doublebuffer,int* startgame,t_ville* ville);
 
-//JEU//
+///JEU///
+//Boucle de jeu
 void bouclejeu(BITMAP* doublebuffer, t_ville* ville, t_infos* infos);
 int detectionClick(int click_x, int click_y);
 t_case* recherche_case_selec(t_ville* ville, int click_x, int click_y);
 
+//Construction batiment
 int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* maison,BITMAP* cabane,BITMAP* immeuble,BITMAP* gratteciel,BITMAP* usine,BITMAP* chateaudeau,BITMAP* route);
 
+//Calcul data joueur
+int calcul_data_J(t_ville* ville, t_infos* infos);
 
 
 #endif //V1_HEADER_H
