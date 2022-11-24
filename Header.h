@@ -36,6 +36,11 @@ typedef struct informations_habitations
     int cout;
     int nb_case_x;
     int nb_case_y;
+    int nb_hab_terrainVague;
+    int nb_hab_cabane;
+    int nb_hab_maison;
+    int nb_hab_immeuble;
+    int nb_hab_gratteCiel;
 }t_infoHab;
 
 typedef struct informations_industries
@@ -43,6 +48,8 @@ typedef struct informations_industries
     int cout;
     int nb_case_x;
     int nb_case_y;
+    int capa_totale_eau;
+    int capa_totale_elec;
 }t_infoIndus;
 
 typedef struct informations_routes      //Pareil pour canalisations et lignes électriques

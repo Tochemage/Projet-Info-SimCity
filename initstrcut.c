@@ -110,7 +110,7 @@ void remplissage_matrice(t_case** maMatrice)
             maMatrice[i][j].habitation->type = 0;
             maMatrice[i][j].habitation->conso_eau = 0;
             maMatrice[i][j].habitation->conso_elec = 0;
-            maMatrice[i][j].habitation->nbr_hab = 0;
+            maMatrice[i][j].habitation->nbr_hab= 0;
 
             ///Structure industrie///
             maMatrice[i][j].industrie = (t_industrie*) malloc(sizeof (t_industrie));
@@ -132,11 +132,18 @@ void init_struct_infos (t_infos* mesInfos)
     mesInfos->I_habitations.cout = 1000;
     mesInfos->I_habitations.nb_case_x = 3;
     mesInfos->I_habitations.nb_case_y = 3;
+    mesInfos->I_habitations.nb_hab_terrainVague = 0;
+    mesInfos->I_habitations.nb_hab_cabane = 10;
+    mesInfos->I_habitations.nb_hab_maison = 50;
+    mesInfos->I_habitations.nb_hab_immeuble = 100;
+    mesInfos->I_habitations.nb_hab_gratteCiel = 1000;
 
     ///Industries///
     mesInfos->I_industries.cout = 100000;
     mesInfos->I_industries.nb_case_x = 4;
     mesInfos->I_industries.nb_case_y = 6;
+    mesInfos->I_industries.capa_totale_eau = 5000;
+    mesInfos->I_industries.capa_totale_elec = 5000;
 
     ///Routes, canalisations, lignes électriques///
     mesInfos->I_routes.cout = 10;
