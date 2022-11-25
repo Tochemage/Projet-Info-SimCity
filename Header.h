@@ -196,7 +196,7 @@ void menu(BITMAP* doublebuffer,int* startgame,t_ville* ville);
 
 ///JEU///
 //Boucle de jeu
-void bouclejeu(BITMAP* doublebuffer, t_ville* ville, t_infos* infos);
+void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* startgame);
 int detectionClick(int click_x, int click_y);
 t_case* recherche_case_selec(t_ville* ville, int click_x, int click_y);
 

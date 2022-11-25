@@ -9,7 +9,7 @@
 //////////////////////////
 
 
-void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos)
+void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* startgame)
 {
 
     ///DECLARATIONS///
@@ -91,6 +91,13 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos)
         exit(EXIT_FAILURE);
     }
 
+    chateaudeau = load_bitmap("images/jeu/plateau/chateaudeau.bmp",NULL);
+    if (!chateaudeau)
+    {
+        allegro_message("pas pu trouver chateau d'eau de jeu");
+        exit(EXIT_FAILURE);
+    }
+
     route = load_bitmap("images/jeu/plateau/route.bmp",NULL);
     if (!route)
     {
@@ -116,6 +123,126 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos)
         }
         blit(fondjeu,doublebuffer,0,0,0,0,1920,1080);
         masked_blit(platjeu,doublebuffer,0,0,0,0,1920,1080);
+
+
+        ///boutons de selection///
+
+        //bouton menu
+
+        if((mouse_y>6 && mouse_y<73)&&(mouse_x>48 && mouse_x<330))
+        {
+            if((mouse_b&1)==1)
+            {
+                //retour au menu
+            }
+        }
+
+        //bouton save
+
+        if((mouse_y>6 && mouse_y<79)&&(mouse_x>495 && mouse_x<952))
+        {
+            if((mouse_b&1)==1)
+            {
+                //save partie on appelle un sous prog qui enregistre tout
+            }
+        }
+        //bouton quitter
+        if((mouse_y>5 && mouse_y<75)&&(mouse_x>1256 && mouse_x<1712))
+        {
+            if((mouse_b&1)==1)
+            {
+                ingame=0;
+                startgame=0;
+            }
+        }
+
+        //bouton placer bat
+        if((mouse_y>6 && mouse_y<73)&&(mouse_x>27 && mouse_x<346))
+        {
+            if((mouse_b&1)==1)
+            {
+                if(batselected==0)
+                {
+                    batselected=1;
+                }
+            }
+        }
+
+        //bouton placer route
+        if((mouse_y>6 && mouse_y<73)&&(mouse_x>27 && mouse_x<346))
+        {
+            if(mouse_b & 1)
+            {
+                if(batselected==0)
+                {
+                    batselected=2;
+                }
+            }
+        }
+        //bouton placer chateau d'eau
+        if((mouse_y>6 && mouse_y<73)&&(mouse_x>27 && mouse_x<346))
+        {
+            if((mouse_b&1)==1)
+            {
+                if(batselected==0)
+                {
+                    batselected=3;
+                }
+            }
+        }
+        //bouton placer usine
+        if((mouse_y>6 && mouse_y<73)&&(mouse_x>27 && mouse_x<346))
+        {
+            if((mouse_b&1)==1)
+            {
+                if(batselected==0)
+                {
+                    batselected=4;
+                }
+            }
+        }
+
+        //bouton 0
+        if((mouse_y>6 && mouse_y<73)&&(mouse_x>27 && mouse_x<346))
+        {
+            if((mouse_b&1)==1)
+            {
+                niveauselec=0;
+            }
+        }
+        //bouton -1
+        if((mouse_y>6 && mouse_y<73)&&(mouse_x>27 && mouse_x<346))
+        {
+            if((mouse_b&1)==1)
+            {
+                niveauselec=1;
+            }
+        }
+        //bouton -2
+        if((mouse_y>6 && mouse_y<73)&&(mouse_x>27 && mouse_x<346))
+        {
+            if((mouse_b&1)==1)
+            {
+                niveauselec=2;
+            }
+        }
+
+        //bouton pause
+        if((mouse_y>6 && mouse_y<73)&&(mouse_x>27 && mouse_x<346))
+        {
+            if((mouse_b&1)==1)
+            {
+                if(cmptpause==0)
+                {
+                    cmptpause=1;
+                }
+                else
+                {
+                    cmptpause=0;
+                }
+            }
+        }
+
 
         ///INTERACTIONS JOUEUR///
         /*
@@ -158,6 +285,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos)
         {
             batselected=0;
         }
+
         batselected=poserbat(batselected,doublebuffer,maVille,maison,cabane,immeuble, gratteciel,usine,chateaudeau,route);
 
 
@@ -192,22 +320,13 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos)
                     {
                         draw_sprite(doublebuffer,usine,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y);
                     }
+                    if(maVille->map[i][j].habitation->type==6)
+                    {
+                        draw_sprite(doublebuffer,chateaudeau,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y);
+                    }
                 }
             }
         }
-        //mettre en play pause avec un bouton
-
-         if(key[KEY_K])//condition bouton
-         {
-            if(cmptpause==0)
-            {
-                cmptpause=1;
-            }
-            else
-            {
-                cmptpause=0;
-            }
-         }
 
 
          ///CALCUL DONNEES JOUEUR///
@@ -298,8 +417,7 @@ t_case* recherche_case_selec(t_ville* ville, int click_x, int click_y)
             }
         }
     }
-
-
+    return NULL;
 }
 
 

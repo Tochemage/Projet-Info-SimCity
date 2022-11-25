@@ -14,13 +14,14 @@ void menu(BITMAP* doublebuffer, int *startgame,t_ville* ville)
     BITMAP* buttoncredits[3];
     BITMAP* buttonexit[3];
     BITMAP* buttonmodedejeu[3];
+    BITMAP* regles[4];
     char nomfichier[100];
     int menutmpimg=0, menuimg=119;
     int undermenu=0;
     int cmpt=0,incmpt=0;
     int nameset=0;
     int gamemode=0;
-
+    int numregle=0;
     int songplaying=0;
 
     SAMPLE *menusong = load_wav("sons/menusong.wav");
@@ -116,6 +117,17 @@ void menu(BITMAP* doublebuffer, int *startgame,t_ville* ville)
             exit(EXIT_FAILURE);
         }
     }
+    for (int i=0; i<4; i++)
+    {
+        sprintf(nomfichier,"images/menu/regle/regles%d.bmp",i+1);
+
+        regles[i] = load_bitmap(nomfichier,NULL);
+        if (!regles[i])
+        {
+            allegro_message("pas pu trouver %s",nomfichier);
+            exit(EXIT_FAILURE);
+        }
+    }
 
 
     while(!key[KEY_ESC] && undermenu!=6)
@@ -123,7 +135,7 @@ void menu(BITMAP* doublebuffer, int *startgame,t_ville* ville)
 
         if(songplaying==0)
         {
-            play_sample(menusong,150,123,1000,1);
+            //play_sample(menusong,150,123,1000,1);
             songplaying=1;
         }
 
@@ -178,7 +190,7 @@ void menu(BITMAP* doublebuffer, int *startgame,t_ville* ville)
                 if((mouse_y>460 && mouse_y<581)&&(mouse_x>987 && mouse_x<1270))//bouton charger une partie
                 {
                     draw_sprite(doublebuffer,buttonload[1],980,460);
-                    if(mouse_b&1==1)
+                    if((mouse_b&1)==1)
                     {
                         draw_sprite(doublebuffer,buttonload[2],980,460);
                         incmpt=1;
@@ -198,7 +210,7 @@ void menu(BITMAP* doublebuffer, int *startgame,t_ville* ville)
                 if((mouse_y>630 && mouse_y<758)&&(mouse_x>637 && mouse_x<920))//bouton regles
                 {
                     draw_sprite(doublebuffer,buttonrules[1],630,630);
-                    if(mouse_b&1==1)
+                    if((mouse_b&1)==1)
                     {
                         draw_sprite(doublebuffer,buttonrules[2],630,630);
                         incmpt=1;
@@ -218,7 +230,7 @@ void menu(BITMAP* doublebuffer, int *startgame,t_ville* ville)
                 if((mouse_y>637 && mouse_y<758)&&(mouse_x>987 && mouse_x<1270))//bouton credits
                 {
                     draw_sprite(doublebuffer,buttoncredits[1],980,630);
-                    if(mouse_b&1==1)
+                    if((mouse_b&1)==1)
                     {
                         draw_sprite(doublebuffer,buttoncredits[2],980,630);
                         incmpt=1;
@@ -238,7 +250,7 @@ void menu(BITMAP* doublebuffer, int *startgame,t_ville* ville)
                 if((mouse_y>797 && mouse_y<918)&&(mouse_x>817 && mouse_x<1100))//bouton exit
                 {
                     draw_sprite(doublebuffer,buttonexit[1],810,790);
-                    if(mouse_b&1==1)
+                    if((mouse_b & 1)==1)
                     {
                         draw_sprite(doublebuffer,buttonexit[2],810,790);
                         incmpt=1;
@@ -324,7 +336,34 @@ void menu(BITMAP* doublebuffer, int *startgame,t_ville* ville)
                 {
                     undermenu=0;
                 }
+
+                if(incmpt==1)
+                {
+                    cmpt++;
+                }
+
+                draw_sprite(doublebuffer,regles[numregle],400,300);
+                if((mouse_y>690 && mouse_y<730)&&(mouse_x>1370 && mouse_x<1420))
+                {
+                    if((mouse_b&1)==1 && incmpt==0)
+                    {
+                        numregle++;
+                        incmpt=1;
+                    }
+                    if(cmpt>=30)
+                    {
+                        incmpt=0;
+                        cmpt=0;
+                    }
+
+                }
+                if(numregle>3)
+                {
+                    numregle=0;
+                    undermenu=0;
+                }
                 break;
+
             }
             case 4:
             {
@@ -339,6 +378,7 @@ void menu(BITMAP* doublebuffer, int *startgame,t_ville* ville)
             {
                 //quitter
                 undermenu=6;
+                *startgame=0;
                 break;
             }
         }
