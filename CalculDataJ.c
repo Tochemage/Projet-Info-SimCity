@@ -5,7 +5,10 @@
 
 #include "Header.h"
 
+///////////////////////////////////
 ///CALCUL DES DONNEES DU JOUEUR///
+/////////////////////////////////
+
 
 int calcul_data_J(t_ville* ville, t_infos* infos)      //Le programme va prendre ce qu'on connait déjà (possessions
 {
@@ -38,7 +41,7 @@ int calcul_data_J(t_ville* ville, t_infos* infos)      //Le programme va prendre
     if(ville->argent >= 50000000  ||  ville->nbr_habitants >= 50000)
     {
         //Allegro : affichage victoire                                             NEED ALLEGRO
-        return 0;   ////Mettre la variable ingame à 0 pour quitter la boucle de jeu
+        return 0;   //Mettre la variable ingame à 0 pour quitter la boucle de jeu
     }
 
     //Défaite

@@ -4,6 +4,11 @@
 
 #include "Header.h"
 
+////////////////
+/// ALLEGRO ///
+//////////////
+
+
 BITMAP* recup_sprites( BITMAP*scr,int w,int h,int startx,int starty,int col,int element)
 // bitmap origine
 // taille de l’image élément d’une animation

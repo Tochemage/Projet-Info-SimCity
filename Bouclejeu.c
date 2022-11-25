@@ -4,6 +4,10 @@
 
 #include "Header.h"
 
+////////////////////////////
+/// BOUCLE DE JEU ET SP ///
+//////////////////////////
+
 
 void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos)
 {

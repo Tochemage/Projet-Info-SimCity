@@ -5,6 +5,9 @@
 
 #include "Header.h"
 
+////////////////////////////////////////////////
+/// CONSTRUCTION / DECONSTRUCTION BATIMENTS ///
+//////////////////////////////////////////////
 
 
 int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* maison,BITMAP* cabane,BITMAP* immeuble,BITMAP* gratteciel,BITMAP* usine,BITMAP* chateaudeau,BITMAP* route)
