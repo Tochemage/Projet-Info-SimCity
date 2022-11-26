@@ -113,3 +113,27 @@ int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* mais
     }
     return batselected;
 }
+
+
+int isroute(int batselected, t_ville* maVille)
+{
+    switch(batselected)
+    {
+        case 1:
+        {
+            break;
+        }
+        case 2:
+        {
+            break;
+        }
+        case 3:
+        {
+            break;
+        }
+        case 4:
+        {
+            break;
+        }
+    }
+}

@@ -52,7 +52,6 @@ void AllegroInit()
     install_keyboard();
     install_mouse();
 
-    set_mouse_speed(0.5,0.5);
     enable_hardware_cursor();
 
     set_color_depth(desktop_color_depth());
