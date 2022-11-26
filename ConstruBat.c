@@ -115,16 +115,19 @@ int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* mais
 }
 
 
-int isroute(int batselected, t_ville* maVille)
+int isroute(int batselected, t_ville* maVille,int coord_x,int coord_y)
 {
     switch(batselected)
     {
         case 1:
         {
-            break;
-        }
-        case 2:
-        {
+            for(int i=0;i<3;i++)
+            {
+                if(maVille->map[coord_x-1][coord_y+i].habitation->type==7 || maVille->map[coord_x+i][coord_y-1].habitation->type==7 || maVille->map[coord_x+3][coord_y+i].habitation->type==7 || maVille->map[coord_x+i][coord_y+3].habitation->type==7)
+                {
+                    return 1;
+                }
+            }
             break;
         }
         case 3:
@@ -136,4 +139,5 @@ int isroute(int batselected, t_ville* maVille)
             break;
         }
     }
+    return 0;
 }
