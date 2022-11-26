@@ -25,6 +25,8 @@ int main() {
 
 
 
+
+
     menu(doublebuffer,startgame,ville);
     printf("out menu");
 

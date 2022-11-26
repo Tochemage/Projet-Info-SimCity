@@ -25,9 +25,9 @@ int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* mais
                     //draw_sprite(doublebuffer,cabane,mouse_x,mouse_y);
                     if((mouse_b&1)==1 && maVille->map[i][j].habitation->type==0 && maVille->map[i+2][j].habitation->type==0 && maVille->map[i+1][j].habitation->type==0 && maVille->map[i+2][j+2].habitation->type==0 && maVille->map[i+1][j+1].habitation->type==0 && maVille->map[i][j+2].habitation->type==0 && maVille->map[i][j+1].habitation->type==0 && maVille->map[i+2][j+1].habitation->type==0 && maVille->map[i+1][j+2].habitation->type==0)
                     {
-                        for(int k=0;i<3;i++)
+                        for(int k=0;k<3;k++)
                         {
-                            for (int l = 0; j < 3; j++)
+                            for (int l = 0; l < 3; l++)
                             {
                                 maVille->map[i+k][j+l].habitation->type = -1;
                             }

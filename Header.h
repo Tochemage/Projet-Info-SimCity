@@ -190,9 +190,9 @@ void remplissage_matrice(t_case** maMatrice);
 void AllegroInit();
 BITMAP* recup_sprites( BITMAP*scr,int w,int h,int startx,int starty,int col,int element);
 
-
 ///MENU///
 void menu(BITMAP* doublebuffer,int* startgame,t_ville* ville);
+
 
 ///JEU///
 //Boucle de jeu
@@ -205,6 +205,11 @@ int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* mais
 
 //Calcul data joueur
 int calcul_data_J(t_ville* ville, t_infos* infos);
+
+
+///SAUVEGARDE///
+void sauvegardeJoueur(t_ville* ville);
+void chargementJoueur(t_ville* ville);
 
 
 #endif //V1_HEADER_H
