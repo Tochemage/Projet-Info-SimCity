@@ -123,6 +123,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         }
         blit(fondjeu,doublebuffer,0,0,0,0,1920,1080);
         masked_blit(platjeu,doublebuffer,0,0,0,0,1920,1080);
+        afficherdonnées(doublebuffer,maVille);
 
 
         ///boutons de selection///
@@ -438,4 +439,12 @@ t_case* recherche_case_selec(t_ville* ville, int click_x, int click_y)
     return NULL;
 }
 
+void afficherdonnées(BITMAP* doublebuffer,t_ville *maVille)
+{
+    FONT *police = NULL; /// Initialisation Polices
+    police = load_font("images/police.pcx",NULL,NULL);
+    if(!police)
+        allegro_message("Erreur chargement police");
 
+    textprintf_right_ex(doublebuffer,police,300,300, makecol(150,0,0),-1,"%ld",maVille->argent);
+}
