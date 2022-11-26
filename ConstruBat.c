@@ -12,7 +12,7 @@
 
 int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* maison,BITMAP* cabane,BITMAP* immeuble,BITMAP* gratteciel,BITMAP* usine,BITMAP* chateaudeau,BITMAP* route)
 {
-
+    int yaroute=0;
     if(batselected==1)//bat
     {
         for(int i=0;i<40;i++)
@@ -22,17 +22,23 @@ int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* mais
                 if((mouse_y>234+i*20 && mouse_y<234+20+i*20)&&(mouse_x>740+j*20 && mouse_x<740+20+j*20) && i!=39 && j!=39 && i!=38 && j!=38 && maVille->map[i][j].habitation->type==0 && maVille->map[i+2][j].habitation->type==0 && maVille->map[i+1][j].habitation->type==0 && maVille->map[i+2][j+2].habitation->type==0 && maVille->map[i+1][j+1].habitation->type==0 && maVille->map[i][j+2].habitation->type==0 && maVille->map[i][j+1].habitation->type==0 && maVille->map[i+2][j+1].habitation->type==0 && maVille->map[i+1][j+2].habitation->type==0)
                 {
                     draw_sprite(doublebuffer,cabane,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y);
-                    if((mouse_b&1)==1 )
+                    if((mouse_b&1)==1)
                     {
-                        for(int k=0;k<3;k++)
+                        yaroute=isroute(batselected,maVille,i,j);
+                        if(yaroute==1)
                         {
-                            for (int l = 0; l < 3; l++)
+                            for(int k=0;k<3;k++)
                             {
-                                maVille->map[i+k][j+l].habitation->type = -1;
+                                yaroute=0;
+                                for (int l = 0; l < 3; l++)
+                                {
+                                    maVille->map[i+k][j+l].habitation->type = -1;
+                                }
                             }
+                            maVille->map[i][j].habitation->type=1;
+                            batselected=0;
                         }
-                        maVille->map[i][j].habitation->type=1;
-                        batselected=0;
+
                     }
                 }
             }
