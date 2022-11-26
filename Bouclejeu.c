@@ -134,6 +134,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         {
             if((mouse_b&1)==1)
             {
+                rest(5);
                 ingame=0;
                 break;
                 //retour au menu
@@ -144,6 +145,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
 
         if((mouse_y>6 && mouse_y<79)&&(mouse_x>495 && mouse_x<952))
         {
+            rest(5);
             if((mouse_b&1)==1)
             {
                 //save partie on appelle un sous prog qui enregistre tout
@@ -152,6 +154,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         //bouton quitter
         if((mouse_y>5 && mouse_y<75)&&(mouse_x>1256 && mouse_x<1712))
         {
+            rest(5);
             if((mouse_b&1)==1)
             {
                 ingame=0;
@@ -164,14 +167,16 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         {
             if((mouse_b&1)==1)
             {
-                if(batselected==0)
-                {
-                    batselected=1;
-                }
-                else
+
+                if(batselected==1)
                 {
                     batselected=0;
                 }
+                else
+                {
+                    batselected=1;
+                }
+                rest(5);
             }
         }
 
@@ -180,14 +185,16 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         {
             if(mouse_b & 1)
             {
-                if(batselected==0)
-                {
-                    batselected=2;
-                }
-                else
+
+                if(batselected==2)
                 {
                     batselected=0;
                 }
+                else
+                {
+                    batselected=2;
+                }
+                rest(5);
             }
         }
         //bouton placer chateau d'eau
@@ -195,14 +202,16 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         {
             if((mouse_b&1)==1)
             {
-                if(batselected==0)
-                {
-                    batselected=3;
-                }
-                else
+
+                if(batselected==3)
                 {
                     batselected=0;
                 }
+                else
+                {
+                    batselected=3;
+                }
+                rest(5);
             }
         }
         //bouton placer usine
@@ -210,14 +219,16 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         {
             if((mouse_b&1)==1)
             {
-                if(batselected==0)
-                {
-                    batselected=4;
-                }
-                else
+
+                if(batselected==4)
                 {
                     batselected=0;
                 }
+                else
+                {
+                    batselected=4;
+                }
+                rest(5);
             }
         }
 
@@ -226,6 +237,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         {
             if((mouse_b&1)==1)
             {
+                rest(5);
                 niveauselec=0;
             }
         }
@@ -234,6 +246,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         {
             if((mouse_b&1)==1)
             {
+                rest(5);
                 niveauselec=1;
             }
         }
@@ -242,6 +255,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         {
             if((mouse_b&1)==1)
             {
+                rest(5);
                 niveauselec=2;
             }
         }
@@ -251,6 +265,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         {
             if((mouse_b&1)==1)
             {
+                rest(5);
                 if(cmptpause==0)
                 {
                     cmptpause=1;
