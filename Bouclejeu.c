@@ -109,7 +109,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
 
 
     ///BOUCLE DE JEU///
-    while(!key[KEY_ESC] && ingame==1)
+    while(!key[KEY_ESC] && ingame==1 && *startgame==1)
     {
         ///PRISE DU TEMPS 1///
         clk1=clock()/CLOCKS_PER_SEC;
@@ -133,6 +133,8 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         {
             if((mouse_b&1)==1)
             {
+                ingame=0;
+                break;
                 //retour au menu
             }
         }

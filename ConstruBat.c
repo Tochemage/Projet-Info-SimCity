@@ -13,7 +13,7 @@
 int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* maison,BITMAP* cabane,BITMAP* immeuble,BITMAP* gratteciel,BITMAP* usine,BITMAP* chateaudeau,BITMAP* route)
 {
 
-    if(batselected==1)
+    if(batselected==1)//bat
     {
         for(int i=0;i<40;i++)
         {
@@ -39,7 +39,7 @@ int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* mais
         }
     }
 
-    if(batselected==2)
+    if(batselected==2)//route
     {
         for(int i=0;i<40;i++)
         {
@@ -58,7 +58,7 @@ int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* mais
         }
     }
 
-    if(batselected==3)
+    if(batselected==4)//usine
     {
         for(int i=0;i<40;i++)
         {
@@ -85,7 +85,7 @@ int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* mais
         }
     }
 
-    if(batselected==4)
+    if(batselected==3)//chateau d'eau
     {
         for(int i=0;i<40;i++)
         {
