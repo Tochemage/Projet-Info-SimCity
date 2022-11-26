@@ -109,7 +109,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
 
 
     ///BOUCLE DE JEU///
-    while(!key[KEY_ESC] && ingame==1)
+    while(!key[KEY_ESC] && ingame==1 && *startgame==1)
     {
         ///PRISE DU TEMPS 1///
         clk1=clock()/CLOCKS_PER_SEC;
@@ -123,6 +123,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         }
         blit(fondjeu,doublebuffer,0,0,0,0,1920,1080);
         masked_blit(platjeu,doublebuffer,0,0,0,0,1920,1080);
+        afficherdonnees(doublebuffer,maVille);
 
 
         ///boutons de selection///
@@ -133,6 +134,9 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         {
             if((mouse_b&1)==1)
             {
+                rest(5);
+                ingame=0;
+                break;
                 //retour au menu
             }
         }
@@ -141,6 +145,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
 
         if((mouse_y>6 && mouse_y<79)&&(mouse_x>495 && mouse_x<952))
         {
+            rest(5);
             if((mouse_b&1)==1)
             {
                 //save partie on appelle un sous prog qui enregistre tout
@@ -149,89 +154,118 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         //bouton quitter
         if((mouse_y>5 && mouse_y<75)&&(mouse_x>1256 && mouse_x<1712))
         {
+            rest(5);
             if((mouse_b&1)==1)
             {
                 ingame=0;
-                startgame=0;
+                *startgame=0;
             }
         }
 
         //bouton placer bat
-        if((mouse_y>6 && mouse_y<73)&&(mouse_x>27 && mouse_x<346))
+        if((mouse_y>222 && mouse_y<286)&&(mouse_x>27 && mouse_x<346))
         {
             if((mouse_b&1)==1)
             {
-                if(batselected==0)
+
+                if(batselected==1)
+                {
+                    batselected=0;
+                }
+                else
                 {
                     batselected=1;
                 }
+                rest(5);
             }
         }
 
         //bouton placer route
-        if((mouse_y>6 && mouse_y<73)&&(mouse_x>27 && mouse_x<346))
+        if((mouse_y>319 && mouse_y<383)&&(mouse_x>27 && mouse_x<346))
         {
             if(mouse_b & 1)
             {
-                if(batselected==0)
+
+                if(batselected==2)
+                {
+                    batselected=0;
+                }
+                else
                 {
                     batselected=2;
                 }
+                rest(5);
             }
         }
         //bouton placer chateau d'eau
-        if((mouse_y>6 && mouse_y<73)&&(mouse_x>27 && mouse_x<346))
+        if((mouse_y>417 && mouse_y<481)&&(mouse_x>27 && mouse_x<346))
         {
             if((mouse_b&1)==1)
             {
-                if(batselected==0)
+
+                if(batselected==3)
+                {
+                    batselected=0;
+                }
+                else
                 {
                     batselected=3;
                 }
+                rest(5);
             }
         }
         //bouton placer usine
-        if((mouse_y>6 && mouse_y<73)&&(mouse_x>27 && mouse_x<346))
+        if((mouse_y>511 && mouse_y<576)&&(mouse_x>27 && mouse_x<346))
         {
             if((mouse_b&1)==1)
             {
-                if(batselected==0)
+
+                if(batselected==4)
+                {
+                    batselected=0;
+                }
+                else
                 {
                     batselected=4;
                 }
+                rest(5);
             }
         }
 
         //bouton 0
-        if((mouse_y>6 && mouse_y<73)&&(mouse_x>27 && mouse_x<346))
+        if((mouse_y>606 && mouse_y<671)&&(mouse_x>27 && mouse_x<346))
         {
             if((mouse_b&1)==1)
             {
+                rest(5);
                 niveauselec=0;
             }
         }
         //bouton -1
-        if((mouse_y>6 && mouse_y<73)&&(mouse_x>27 && mouse_x<346))
+        if((mouse_y>707 && mouse_y<773)&&(mouse_x>27 && mouse_x<346))
         {
             if((mouse_b&1)==1)
             {
+                rest(5);
                 niveauselec=1;
             }
         }
         //bouton -2
-        if((mouse_y>6 && mouse_y<73)&&(mouse_x>27 && mouse_x<346))
+        if((mouse_y>816 && mouse_y<880)&&(mouse_x>27 && mouse_x<346))
         {
             if((mouse_b&1)==1)
             {
+                rest(5);
                 niveauselec=2;
             }
         }
 
         //bouton pause
-        if((mouse_y>6 && mouse_y<73)&&(mouse_x>27 && mouse_x<346))
+        if((mouse_y>906 && mouse_y<970)&&(mouse_x>27 && mouse_x<346))
         {
             if((mouse_b&1)==1)
             {
+                rest(5);
                 if(cmptpause==0)
                 {
                     cmptpause=1;
@@ -420,4 +454,11 @@ t_case* recherche_case_selec(t_ville* ville, int click_x, int click_y)
     return NULL;
 }
 
+void afficherdonnees(BITMAP* doublebuffer,t_ville *maVille)
+{
+    FONT *police = load_font("images/font/font1.pcx",NULL,NULL);
+    if(!police)
+        allegro_message("Erreur chargement police");
 
+    //textprintf_ex(doublebuffer,police,190,90,makecol(253,108,158),-1,"hey");
+}
