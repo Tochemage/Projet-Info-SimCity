@@ -120,8 +120,8 @@ typedef struct habitation
     char nom_bat[20];
     int num_bat;        //Numéro de batiment pour pouvoir comparer aux autres cases et savoir sur quelles cases est un batiment, commence à 1 (defaut:0)
     int type;           // 0:vide   1:terrain vague(0 hab), 2:cabane(10 hab), 3:maison(50 hab), 4:immeuble(100 hab), 5:Gratte-ciel(1000 hab)
-    int conso_eau;      //=Nb habitants de ce type d'habitation
-    int conso_elec;     //=Nb habitants de ce type d'habitation
+    int apport_eau;      //Eau apportée au batiment (entier compris entre [0;nbr_hab]
+    int apport_elec;     //Elec apportée au batiment (entier compris entre [0;nbr_hab]
     int nbr_hab;
 }t_habitation;
 

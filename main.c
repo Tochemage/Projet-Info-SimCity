@@ -25,7 +25,7 @@ int main() {
 
 
     /// A RETIRER !!! ///
-    //sauvegardeJoueur(ville);
+    sauvegardeJoueur(ville);
 
 
     do{

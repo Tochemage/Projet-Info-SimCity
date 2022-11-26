@@ -108,8 +108,8 @@ void remplissage_matrice(t_case** maMatrice)
             maMatrice[i][j].habitation = (t_habitation*) malloc(sizeof (t_habitation));
             maMatrice[i][j].habitation->num_bat = 0;
             maMatrice[i][j].habitation->type = 0;
-            maMatrice[i][j].habitation->conso_eau = 0;
-            maMatrice[i][j].habitation->conso_elec = 0;
+            maMatrice[i][j].habitation->apport_eau = 0;
+            maMatrice[i][j].habitation->apport_elec = 0;
             maMatrice[i][j].habitation->nbr_hab= 0;
 
             ///Structure industrie///
