@@ -24,6 +24,10 @@ int main() {
     sp_init_struct(ville, infoVille);   //Sp d'initialisation des structures
 
 
+    /// A RETIRER !!! ///
+    //sauvegardeJoueur(ville);
+
+
     do{
     menu(doublebuffer,startgame,ville);
     printf("out menu");
