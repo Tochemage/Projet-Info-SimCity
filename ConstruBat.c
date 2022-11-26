@@ -69,9 +69,9 @@ int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* mais
                     draw_sprite(doublebuffer,usine,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y);
                     if((mouse_b&1)==1 && maVille->map[i][j].habitation->type==0 && maVille->map[i+2][j].habitation->type==0 && maVille->map[i+1][j].habitation->type==0 && maVille->map[i+2][j+2].habitation->type==0 && maVille->map[i+1][j+1].habitation->type==0 && maVille->map[i][j+2].habitation->type==0 && maVille->map[i][j+1].habitation->type==0 && maVille->map[i+2][j+1].habitation->type==0 && maVille->map[i+1][j+2].habitation->type==0)
                     {
-                        for(int k=0;i<4;i++)
+                        for(int k=0;k<4;k++)
                         {
-                            for (int l = 0; j < 6; j++)
+                            for (int l = 0; l < 6; l++)
                             {
                                 maVille->map[i+k][j+l].habitation->type = -1;
                             }
@@ -96,9 +96,9 @@ int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* mais
                     draw_sprite(doublebuffer,chateaudeau,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y);
                     if((mouse_b&1)==1 && maVille->map[i][j].habitation->type==0 && maVille->map[i+2][j].habitation->type==0 && maVille->map[i+1][j].habitation->type==0 && maVille->map[i+2][j+2].habitation->type==0 && maVille->map[i+1][j+1].habitation->type==0 && maVille->map[i][j+2].habitation->type==0 && maVille->map[i][j+1].habitation->type==0 && maVille->map[i+2][j+1].habitation->type==0 && maVille->map[i+1][j+2].habitation->type==0)
                     {
-                        for(int k=0;i<4;i++)
+                        for(int k=0;k<4;k++)
                         {
-                            for (int l = 0; j < 6; j++)
+                            for (int l = 0; l < 6; l++)
                             {
                                 maVille->map[i+k][j+l].habitation->type = -1;
                             }
