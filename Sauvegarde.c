@@ -61,19 +61,19 @@ void sauvegardeJoueur(t_ville* ville)  //Mettre structure joueur en paramètre
         {
             for(int j=0; j<NB_COLONNES; j++)
             {
-                fprintf(fichierMap, "%s\n", ville->map[i][j].num_case);
-                fprintf(fichierMap, "%s\n", ville->map[i][j].type_case);
-                fprintf(fichierMap, "%s\n", ville->map[i][j].num_color);
-                fprintf(fichierMap, "%s\n", ville->map[i][j].num_case_x);
-                fprintf(fichierMap, "%s\n", ville->map[i][j].num_case_y);
+                fprintf(fichierMap, "%d\n", ville->map[i][j].num_case);
+                fprintf(fichierMap, "%d\n", ville->map[i][j].type_case);
+                fprintf(fichierMap, "%d\n", ville->map[i][j].num_color);
+                fprintf(fichierMap, "%d\n", ville->map[i][j].num_case_x);
+                fprintf(fichierMap, "%d\n", ville->map[i][j].num_case_y);
                 fprintf(fichierMap, "%s\n", ville->map[i][j].habitation->nom_bat);
-                fprintf(fichierMap, "%s\n", ville->map[i][j].habitation->num_bat);
-                fprintf(fichierMap, "%s\n", ville->map[i][j].habitation->type);
-                fprintf(fichierMap, "%s\n", ville->map[i][j].habitation->conso_eau);
-                fprintf(fichierMap, "%s\n", ville->map[i][j].habitation->conso_elec);
-                fprintf(fichierMap, "%s\n", ville->map[i][j].habitation->nbr_hab);
-                fprintf(fichierMap, "%s\n", ville->map[i][j].industrie->num_bat);
-                fprintf(fichierMap, "%s\n", ville->map[i][j].industrie->type);
+                fprintf(fichierMap, "%d\n", ville->map[i][j].habitation->num_bat);
+                fprintf(fichierMap, "%d\n", ville->map[i][j].habitation->type);
+                fprintf(fichierMap, "%d\n", ville->map[i][j].habitation->apport_eau);
+                fprintf(fichierMap, "%d\n", ville->map[i][j].habitation->apport_elec);
+                fprintf(fichierMap, "%d\n", ville->map[i][j].habitation->nbr_hab);
+                fprintf(fichierMap, "%d\n", ville->map[i][j].industrie->num_bat);
+                fprintf(fichierMap, "%d\n", ville->map[i][j].industrie->type);
                 fprintf(fichierMap, "%s\n", ville->map[i][j].industrie->nom_bat);
 
             }

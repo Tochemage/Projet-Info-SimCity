@@ -23,8 +23,6 @@ int main() {
     ///Initialisations///
     sp_init_struct(ville, infoVille);   //Sp d'initialisation des structures
 
-
-    /// A RETIRER !!! ///
     sauvegardeJoueur(ville);
 
 
