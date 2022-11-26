@@ -168,7 +168,7 @@ void menu(BITMAP* doublebuffer, int *startgame,t_ville* ville)
                 if((mouse_y>460 && mouse_y<581)&&(mouse_x>637 && mouse_x<920))//bouton lancer partie
                 {
                     draw_sprite(doublebuffer,buttonstart[1],630,460);
-                    if(mouse_b&1==1)
+                    if((mouse_b&1)==1)
                     {
                         draw_sprite(doublebuffer,buttonstart[2],630,460);
                         incmpt=1;
@@ -285,7 +285,7 @@ void menu(BITMAP* doublebuffer, int *startgame,t_ville* ville)
                     if((mouse_y>334 && mouse_y<685)&&(mouse_x>85 && mouse_x<930))//bouton exit
                     {
                         draw_sprite(doublebuffer,buttonmodedejeu[1],0,0);
-                        if(mouse_b&1==1)
+                        if((mouse_b&1)==1)
                         {
                             ville->mode_jeu=0;
                             gamemode=1;
@@ -294,7 +294,7 @@ void menu(BITMAP* doublebuffer, int *startgame,t_ville* ville)
                     if((mouse_y>334 && mouse_y<685)&&(mouse_x>1000 && mouse_x<1800))//bouton exit
                     {
                         draw_sprite(doublebuffer,buttonmodedejeu[2],0,0);
-                        if(mouse_b&1==1)
+                        if((mouse_b&1)==1)
                         {
                             ville->mode_jeu=1;
                             gamemode=1;

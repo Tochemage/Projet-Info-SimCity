@@ -152,12 +152,12 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
             if((mouse_b&1)==1)
             {
                 ingame=0;
-                startgame=0;
+                *startgame=0;
             }
         }
 
         //bouton placer bat
-        if((mouse_y>6 && mouse_y<73)&&(mouse_x>27 && mouse_x<346))
+        if((mouse_y>222 && mouse_y<286)&&(mouse_x>27 && mouse_x<346))
         {
             if((mouse_b&1)==1)
             {
@@ -165,11 +165,15 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
                 {
                     batselected=1;
                 }
+                else
+                {
+                    batselected=0;
+                }
             }
         }
 
         //bouton placer route
-        if((mouse_y>6 && mouse_y<73)&&(mouse_x>27 && mouse_x<346))
+        if((mouse_y>319 && mouse_y<383)&&(mouse_x>27 && mouse_x<346))
         {
             if(mouse_b & 1)
             {
@@ -177,10 +181,14 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
                 {
                     batselected=2;
                 }
+                else
+                {
+                    batselected=0;
+                }
             }
         }
         //bouton placer chateau d'eau
-        if((mouse_y>6 && mouse_y<73)&&(mouse_x>27 && mouse_x<346))
+        if((mouse_y>417 && mouse_y<481)&&(mouse_x>27 && mouse_x<346))
         {
             if((mouse_b&1)==1)
             {
@@ -188,10 +196,14 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
                 {
                     batselected=3;
                 }
+                else
+                {
+                    batselected=0;
+                }
             }
         }
         //bouton placer usine
-        if((mouse_y>6 && mouse_y<73)&&(mouse_x>27 && mouse_x<346))
+        if((mouse_y>511 && mouse_y<576)&&(mouse_x>27 && mouse_x<346))
         {
             if((mouse_b&1)==1)
             {
@@ -199,11 +211,15 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
                 {
                     batselected=4;
                 }
+                else
+                {
+                    batselected=0;
+                }
             }
         }
 
         //bouton 0
-        if((mouse_y>6 && mouse_y<73)&&(mouse_x>27 && mouse_x<346))
+        if((mouse_y>606 && mouse_y<671)&&(mouse_x>27 && mouse_x<346))
         {
             if((mouse_b&1)==1)
             {
@@ -211,7 +227,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
             }
         }
         //bouton -1
-        if((mouse_y>6 && mouse_y<73)&&(mouse_x>27 && mouse_x<346))
+        if((mouse_y>707 && mouse_y<773)&&(mouse_x>27 && mouse_x<346))
         {
             if((mouse_b&1)==1)
             {
@@ -219,7 +235,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
             }
         }
         //bouton -2
-        if((mouse_y>6 && mouse_y<73)&&(mouse_x>27 && mouse_x<346))
+        if((mouse_y>816 && mouse_y<880)&&(mouse_x>27 && mouse_x<346))
         {
             if((mouse_b&1)==1)
             {
@@ -228,7 +244,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         }
 
         //bouton pause
-        if((mouse_y>6 && mouse_y<73)&&(mouse_x>27 && mouse_x<346))
+        if((mouse_y>906 && mouse_y<970)&&(mouse_x>27 && mouse_x<346))
         {
             if((mouse_b&1)==1)
             {
