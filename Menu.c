@@ -331,10 +331,9 @@ void menu(BITMAP* doublebuffer, int *startgame,t_ville* ville)
             case 2:
             {
                 //charger une sauvegarde
-                if(key[KEY_E])
-                {
-                    undermenu=0;
-                }
+                chargementJoueur(ville);
+                *startgame=1;
+                undermenu=6;
                 break;
             }
             case 3:
@@ -380,22 +379,13 @@ void menu(BITMAP* doublebuffer, int *startgame,t_ville* ville)
                 {
                     undermenu=0;
                 }
-                if(incmpt==1)
-                {
-                    cmpt++;
-                }
+
                 draw_sprite(doublebuffer,credits,0,0);
                 if((mouse_y>782 && mouse_y<910)&&(mouse_x>1449 && mouse_x<1559))
                 {
-                    if((mouse_b&1)==1 && incmpt==0)
+                    if((mouse_b&1)==1)
                     {
                         undermenu=0;
-                        incmpt=1;
-                    }
-                    if(cmpt>=30)
-                    {
-                        incmpt=0;
-                        cmpt=0;
                     }
                 }
                 break;
