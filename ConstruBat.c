@@ -44,7 +44,7 @@ int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* mais
         }
     }
 
-    if(batselected==2)//route
+    if(batselected==2)  //Route
     {
         for(int i=0;i<40;i++)
         {

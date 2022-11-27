@@ -149,6 +149,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
             if((mouse_b&1)==1)
             {
                 //save partie on appelle un sous prog qui enregistre tout
+                sauvegardeJoueur(maVille);
             }
         }
         //bouton quitter
@@ -157,8 +158,9 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
             rest(5);
             if((mouse_b&1)==1)
             {
-                ingame=0;
                 *startgame=0;
+                ingame=0;
+                //*startgame=0;
             }
         }
 
