@@ -1,6 +1,7 @@
 #include "Header.h"
 
-int main() {
+int main()
+{
 
 
     AllegroInit();

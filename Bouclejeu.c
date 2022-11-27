@@ -117,6 +117,8 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         {
             maVille->nbr_mois_jeu++;
             maVille->argent += (maVille->nbr_habitants * maVille->impots);
+            devolve(maVille,infos);
+            canevolve(maVille,infos);
 
             //printf("%d\n",cmptmois);
             clktot=0;
@@ -322,7 +324,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
             batselected=0;
         }
 
-        batselected=poserbat(batselected,doublebuffer,maVille,maison,cabane,immeuble, gratteciel,usine,chateaudeau,route);
+        batselected=poserbat(batselected,doublebuffer,maVille,maison,cabane,immeuble, gratteciel,usine,chateaudeau,route,infos);
 
 
 
@@ -463,5 +465,5 @@ void afficherdonnees(BITMAP* doublebuffer,t_ville *maVille)
         allegro_message("Erreur chargement police");
 
     //textprintf_ex(doublebuffer,police,190,90,makecol(253,108,158),0,"hey");
-    //textout_ex(doublebuffer);
+    //textout_ex(doublebuffer,font,"hey",300,300,makecol(0,0,0),-1);
 }

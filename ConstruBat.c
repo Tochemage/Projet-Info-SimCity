@@ -10,7 +10,7 @@
 //////////////////////////////////////////////
 
 
-int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* maison,BITMAP* cabane,BITMAP* immeuble,BITMAP* gratteciel,BITMAP* usine,BITMAP* chateaudeau,BITMAP* route)
+int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* maison,BITMAP* cabane,BITMAP* immeuble,BITMAP* gratteciel,BITMAP* usine,BITMAP* chateaudeau,BITMAP* route, t_infos* mesInfos)
 {
     int yaroute=0;
     if(batselected==1)//bat
@@ -36,6 +36,9 @@ int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* mais
                                 }
                             }
                             maVille->map[i][j].habitation->type=1;
+                            maVille->map[i][j].habitation->nbr_hab=mesInfos->I_habitations.nb_hab_cabane;
+                            //maVille->map[i][j].habitation->num_bat=;
+                            maVille->argent-= mesInfos->I_habitations.cout;
                             batselected=0;
                         }
                     }
@@ -56,6 +59,7 @@ int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* mais
                     if((mouse_b&1)==1 && maVille->map[i][j].habitation->type==0)
                     {
                         maVille->map[i][j].habitation->type = 7;
+                        maVille->argent-=mesInfos->I_routes.cout;
                         //batselected = 0;
                     }
                 }
@@ -87,6 +91,7 @@ int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* mais
 
                             }
                             maVille->map[i][j].habitation->type = 5;
+                            maVille->argent-=mesInfos->I_industries.cout;
                             batselected=0;
                         }
 
@@ -120,6 +125,7 @@ int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* mais
 
                             }
                             maVille->map[i][j].habitation->type = 6;
+                            maVille->argent-=mesInfos->I_industries.cout;
                             batselected=0;
                         }
 
