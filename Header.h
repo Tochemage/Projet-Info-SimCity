@@ -202,9 +202,12 @@ int detectionClick(int click_x, int click_y);
 t_case* recherche_case_selec(t_ville* ville, int click_x, int click_y);
 void afficherdonnees(BITMAP* doublebuffer,t_ville* maVille);
 int isroute(int batselected, t_ville* maVille,int coord_x,int coord_y);
+void canevolve(t_ville* maVille, t_infos* infos);
+void devolve(t_ville* maVille, t_infos* infos);
+void tothab(t_ville* maVille);
 
 //Construction batiment
-int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* maison,BITMAP* cabane,BITMAP* immeuble,BITMAP* gratteciel,BITMAP* usine,BITMAP* chateaudeau,BITMAP* route);
+int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* maison,BITMAP* cabane,BITMAP* immeuble,BITMAP* gratteciel,BITMAP* usine,BITMAP* chateaudeau,BITMAP* route, t_infos* mesInfos);
 
 //Calcul data joueur
 int calcul_data_J(t_ville* ville, t_infos* infos);

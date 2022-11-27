@@ -1,6 +1,7 @@
 #include "Header.h"
 
-int main() {
+int main()
+{
 
 
     AllegroInit();
@@ -26,13 +27,13 @@ int main() {
 
     do{
     menu(doublebuffer,startgame,ville);
-    printf("out menu");
+    //printf("out menu");
 
     if(ingame==1)
     {
         bouclejeu(doublebuffer, ville, infoVille,startgame);
     }
-    printf("out jeu");
+    //printf("out jeu");
     }while(ingame==1);
 
     destroy_bitmap(doublebuffer);
