@@ -10,7 +10,7 @@
 //////////////////////////////////////////////
 
 
-int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* maison,BITMAP* cabane,BITMAP* immeuble,BITMAP* gratteciel,BITMAP* usine,BITMAP* chateaudeau,BITMAP* route)
+int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* maison,BITMAP* cabane,BITMAP* immeuble,BITMAP* gratteciel,BITMAP* usine,BITMAP* chateaudeau,BITMAP* route, t_infos* mesInfos)
 {
     int yaroute=0;
     if(batselected==1)//bat
@@ -25,7 +25,7 @@ int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* mais
                     if((mouse_b&1)==1)
                     {
                         yaroute=isroute(batselected,maVille,i,j);
-                        if(yaroute==1)
+                        if(yaroute==1 && mesInfos->I_habitations.cout<maVille->argent)
                         {
                             for(int k=0;k<3;k++)
                             {
@@ -36,6 +36,9 @@ int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* mais
                                 }
                             }
                             maVille->map[i][j].habitation->type=1;
+                            maVille->map[i][j].habitation->nbr_hab=mesInfos->I_habitations.nb_hab_cabane;
+                            //maVille->map[i][j].habitation->num_bat=;
+                            maVille->argent-= mesInfos->I_habitations.cout;
                             batselected=0;
                         }
                     }
@@ -53,9 +56,10 @@ int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* mais
                 if((mouse_y>234+i*20 && mouse_y<234+20+i*20)&&(mouse_x>740+j*20 && mouse_x<740+20+j*20) && maVille->map[i][j].habitation->type==0)
                 {
                     draw_sprite(doublebuffer,route,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y);
-                    if((mouse_b&1)==1 && maVille->map[i][j].habitation->type==0)
+                    if((mouse_b&1)==1 && maVille->map[i][j].habitation->type==0 && mesInfos->I_routes.cout<maVille->argent)
                     {
                         maVille->map[i][j].habitation->type = 7;
+                        maVille->argent-=mesInfos->I_routes.cout;
                         //batselected = 0;
                     }
                 }
@@ -75,7 +79,7 @@ int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* mais
                     if((mouse_b&1)==1 && maVille->map[i][j].habitation->type==0 && maVille->map[i+2][j].habitation->type==0 && maVille->map[i+1][j].habitation->type==0 && maVille->map[i+2][j+2].habitation->type==0 && maVille->map[i+1][j+1].habitation->type==0 && maVille->map[i][j+2].habitation->type==0 && maVille->map[i][j+1].habitation->type==0 && maVille->map[i+2][j+1].habitation->type==0 && maVille->map[i+1][j+2].habitation->type==0)
                     {
                         yaroute=isroute(batselected,maVille,i,j);
-                        if(yaroute==1)
+                        if(yaroute==1 && mesInfos->I_industries.cout<maVille->argent)
                         {
                             yaroute = 0;
                             for (int k = 0; k < 4; k++)
@@ -87,6 +91,7 @@ int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* mais
 
                             }
                             maVille->map[i][j].habitation->type = 5;
+                            maVille->argent-=mesInfos->I_industries.cout;
                             batselected=0;
                         }
 
@@ -108,7 +113,7 @@ int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* mais
                     if((mouse_b&1)==1 && maVille->map[i][j].habitation->type==0 && maVille->map[i+2][j].habitation->type==0 && maVille->map[i+1][j].habitation->type==0 && maVille->map[i+2][j+2].habitation->type==0 && maVille->map[i+1][j+1].habitation->type==0 && maVille->map[i][j+2].habitation->type==0 && maVille->map[i][j+1].habitation->type==0 && maVille->map[i+2][j+1].habitation->type==0 && maVille->map[i+1][j+2].habitation->type==0)
                     {
                         yaroute=isroute(batselected,maVille,i,j);
-                        if(yaroute==1)
+                        if(yaroute==1 && mesInfos->I_industries.cout<maVille->argent)
                         {
                             yaroute = 0;
                             for (int k = 0; k < 4; k++)
@@ -120,6 +125,7 @@ int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* mais
 
                             }
                             maVille->map[i][j].habitation->type = 6;
+                            maVille->argent-=mesInfos->I_industries.cout;
                             batselected=0;
                         }
 

@@ -21,6 +21,7 @@ void sp_init_struct(t_ville* maVille, t_infos* infos)           //Appels de tous
 void init_struct_ville (t_ville* maVille)
 {
     ///General///
+    sprintf(maVille->nom, "AucunNom");
     maVille->argent = 500000;
     maVille->nbr_habitants = 0;
     maVille->capa_eau = 0;
@@ -106,6 +107,7 @@ void remplissage_matrice(t_case** maMatrice)
 
             ///Structure habitation///
             maMatrice[i][j].habitation = (t_habitation*) malloc(sizeof (t_habitation));
+            sprintf(maMatrice[i][j].habitation->nom_bat, "AucunNom");
             maMatrice[i][j].habitation->num_bat = 0;
             maMatrice[i][j].habitation->type = 0;
             maMatrice[i][j].habitation->apport_eau = 0;
@@ -114,6 +116,7 @@ void remplissage_matrice(t_case** maMatrice)
 
             ///Structure industrie///
             maMatrice[i][j].industrie = (t_industrie*) malloc(sizeof (t_industrie));
+            sprintf(maMatrice[i][j].industrie->nom_bat, "AucunNom");
             maMatrice[i][j].industrie->num_bat = 0;
             maMatrice[i][j].industrie->type = 0;
         }
