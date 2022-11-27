@@ -15,6 +15,7 @@ void menu(BITMAP* doublebuffer, int *startgame,t_ville* ville)
     BITMAP* buttonexit[3];
     BITMAP* buttonmodedejeu[3];
     BITMAP* regles[4];
+    BITMAP* credits;
     char nomfichier[100];
     int menutmpimg=0, menuimg=119;
     int undermenu=0;
@@ -47,6 +48,13 @@ void menu(BITMAP* doublebuffer, int *startgame,t_ville* ville)
     if (!logo)
     {
         allegro_message("pas pu trouver logo");
+        exit(EXIT_FAILURE);
+    }
+
+    credits = load_bitmap("images/menu/regle/credits.bmp",NULL);
+    if (!credits)
+    {
+        allegro_message("pas pu trouver credits");
         exit(EXIT_FAILURE);
     }
 
@@ -371,6 +379,24 @@ void menu(BITMAP* doublebuffer, int *startgame,t_ville* ville)
                 if(key[KEY_E])
                 {
                     undermenu=0;
+                }
+                if(incmpt==1)
+                {
+                    cmpt++;
+                }
+                draw_sprite(doublebuffer,credits,0,0);
+                if((mouse_y>782 && mouse_y<910)&&(mouse_x>1449 && mouse_x<1559))
+                {
+                    if((mouse_b&1)==1 && incmpt==0)
+                    {
+                        undermenu=0;
+                        incmpt=1;
+                    }
+                    if(cmpt>=30)
+                    {
+                        incmpt=0;
+                        cmpt=0;
+                    }
                 }
                 break;
             }

@@ -205,6 +205,7 @@ int isroute(int batselected, t_ville* maVille,int coord_x,int coord_y);
 void canevolve(t_ville* maVille, t_infos* infos);
 void devolve(t_ville* maVille, t_infos* infos);
 void tothab(t_ville* maVille);
+void detruirebat(t_ville* maVille,int indestruct);
 
 //Construction batiment
 int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* maison,BITMAP* cabane,BITMAP* immeuble,BITMAP* gratteciel,BITMAP* usine,BITMAP* chateaudeau,BITMAP* route, t_infos* mesInfos);
