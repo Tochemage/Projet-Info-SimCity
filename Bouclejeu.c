@@ -22,6 +22,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
 
     int batselected=0;// 1 pour une habitation, 2 pour une route, 3 pour une usine, 4 pour un chateau d'eau, 5 pour sup
     int niveauselec=0;// 0 pour normal, 1 pour l'eau, -1 pour elec
+    int destructselec=0;// choisir de detruire ou pas
     ///Variables a base de structure///
     t_case* case_temp=NULL;
 
@@ -38,6 +39,8 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
     BITMAP* chateaudeau;
 
     BITMAP* route;
+    BITMAP* route_elec;
+    BITMAP* route_eau;
 
     //Joueur
     int click_x=-1, click_y=-1, selection=-1;
@@ -100,6 +103,20 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
 
     route = load_bitmap("images/jeu/plateau/route.bmp",NULL);
     if (!route)
+    {
+        allegro_message("pas pu trouver route de jeu");
+        exit(EXIT_FAILURE);
+    }
+
+    route_eau = load_bitmap("images/jeu/plateau/route_eau.bmp",NULL);
+    if (!route_eau)
+    {
+        allegro_message("pas pu trouver route de jeu");
+        exit(EXIT_FAILURE);
+    }
+
+    route_elec = load_bitmap("images/jeu/plateau/route_elec.bmp",NULL);
+    if (!route_elec)
     {
         allegro_message("pas pu trouver route de jeu");
         exit(EXIT_FAILURE);
@@ -178,6 +195,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
                 }
                 else
                 {
+                    destructselec=0;
                     batselected=1;
                 }
                 rest(5);
@@ -196,6 +214,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
                 }
                 else
                 {
+                    destructselec=0;
                     batselected=2;
                 }
                 rest(5);
@@ -213,6 +232,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
                 }
                 else
                 {
+                    destructselec=0;
                     batselected=3;
                 }
                 rest(5);
@@ -230,6 +250,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
                 }
                 else
                 {
+                    destructselec=0;
                     batselected=4;
                 }
                 rest(5);
@@ -281,6 +302,22 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
             }
         }
 
+        if((mouse_y>976 && mouse_y<1074)&&(mouse_x>284 && mouse_x<346))//bouton suppr batiment
+        {
+            if((mouse_b&1)==1)
+            {
+                rest(5);
+                if(destructselec==0)
+                {
+                    destructselec=1;
+                    batselected=0;
+                }
+                else
+                {
+                    destructselec=0;
+                }
+            }
+        }
 
         ///INTERACTIONS JOUEUR///
         /*
@@ -326,8 +363,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
 
         batselected=poserbat(batselected,doublebuffer,maVille,maison,cabane,immeuble, gratteciel,usine,chateaudeau,route,infos);
         tothab(maVille);
-
-
+        detruirebat(maVille,destructselec);
 
         if(niveauselec==0)
         {
@@ -367,10 +403,84 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
             }
         }
 
+        if(niveauselec==1)
+        {
+            for(int i=0;i<40;i++)
+            {
+                for(int j=0;j<40;j++)
+                {
+                    if(maVille->map[i][j].habitation->type==1)
+                    {
+                        draw_sprite(doublebuffer,cabane,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y);
+                    }
+                    if(maVille->map[i][j].habitation->type==7)
+                    {
+                        draw_sprite(doublebuffer,route_eau,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y);
+                    }
+                    if(maVille->map[i][j].habitation->type==2)
+                    {
+                        draw_sprite(doublebuffer,maison,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y-20);
+                    }
+                    if(maVille->map[i][j].habitation->type==3)
+                    {
+                        draw_sprite(doublebuffer,immeuble,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y);
+                    }
+                    if(maVille->map[i][j].habitation->type==4)
+                    {
+                        draw_sprite(doublebuffer,gratteciel,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y);
+                    }
+                    if(maVille->map[i][j].habitation->type==5)
+                    {
+                        draw_sprite(doublebuffer,usine,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y);
+                    }
+                    if(maVille->map[i][j].habitation->type==6)
+                    {
+                        draw_sprite(doublebuffer,chateaudeau,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y);
+                    }
+                }
+            }
+        }
+
+        if(niveauselec==2)
+        {
+            for(int i=0;i<40;i++)
+            {
+                for(int j=0;j<40;j++)
+                {
+                    if(maVille->map[i][j].habitation->type==1)
+                    {
+                        draw_sprite(doublebuffer,cabane,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y);
+                    }
+                    if(maVille->map[i][j].habitation->type==7)
+                    {
+                        draw_sprite(doublebuffer,route_elec,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y);
+                    }
+                    if(maVille->map[i][j].habitation->type==2)
+                    {
+                        draw_sprite(doublebuffer,maison,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y-20);
+                    }
+                    if(maVille->map[i][j].habitation->type==3)
+                    {
+                        draw_sprite(doublebuffer,immeuble,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y);
+                    }
+                    if(maVille->map[i][j].habitation->type==4)
+                    {
+                        draw_sprite(doublebuffer,gratteciel,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y);
+                    }
+                    if(maVille->map[i][j].habitation->type==5)
+                    {
+                        draw_sprite(doublebuffer,usine,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y);
+                    }
+                    if(maVille->map[i][j].habitation->type==6)
+                    {
+                        draw_sprite(doublebuffer,chateaudeau,maVille->map[i][j].num_case_x,maVille->map[i][j].num_case_y);
+                    }
+                }
+            }
+        }
 
          ///CALCUL DONNEES JOUEUR///
          ingame = calcul_data_J(maVille, infos);
-
 
         ///QUITTER LE JEU///
         if(key[KEY_RCONTROL])//quitter le jeu (fin du prog)
@@ -380,7 +490,6 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         show_mouse(doublebuffer);
         blit(doublebuffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
         rest(10);
-
 
         ///PRISE DU TEMPS 2///
         clk2=clock()/CLOCKS_PER_SEC;
@@ -467,9 +576,9 @@ void afficherdonnees(BITMAP* doublebuffer,t_ville *maVille)
 
     textprintf_ex(doublebuffer,police,330,120,makecol(0,0,0),-1,"%ld",maVille->argent);
     textprintf_ex(doublebuffer,police,700,120,makecol(0,0,0),-1,"%d",maVille->nbr_mois_jeu);
-    textprintf_ex(doublebuffer,police,1100,120,makecol(0,0,0),-1,"%d",maVille->nbr_habitants);
-    //textprintf_ex(doublebuffer,police,650,120,makecol(0,0,0),-1,"%ld",maVille->argent);// eau?
-    //textprintf_ex(doublebuffer,police,850,120,makecol(0,0,0),-1,"%ld",maVille->argent);// elec?
+    textprintf_ex(doublebuffer,police,1042,120,makecol(0,0,0),-1,"%d",maVille->nbr_habitants);
+    textprintf_ex(doublebuffer,police,1315,129,makecol(0,0,0),-1,"%d",maVille->capa_eau);// eau?
+    textprintf_ex(doublebuffer,police,1650,120,makecol(0,0,0),-1,"%d",maVille->capa_elec);// elec?
 
 }
 
