@@ -36,8 +36,12 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
     BITMAP* gratteciel;
     BITMAP* usine;
     BITMAP* chateaudeau;
-
     BITMAP* route;
+
+    ///Police///
+    FONT* police;
+
+    police=load_font("police.pcx", NULL, NULL);
 
     //Joueur
     int click_x=-1, click_y=-1, selection=-1;
@@ -125,6 +129,9 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         masked_blit(platjeu,doublebuffer,0,0,0,0,1920,1080);
         afficherdonnees(doublebuffer,maVille);
 
+
+        /// Affichage coordonnées souris ///
+        textprintf_ex(doublebuffer,font,0,0,makecol(255,255,255),makecol(0,0,0),"%d %d",mouse_x, mouse_y);
 
         ///boutons de selection///
 
