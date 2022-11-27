@@ -325,6 +325,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         }
 
         batselected=poserbat(batselected,doublebuffer,maVille,maison,cabane,immeuble, gratteciel,usine,chateaudeau,route,infos);
+        tothab(maVille);
 
 
 
@@ -464,6 +465,26 @@ void afficherdonnees(BITMAP* doublebuffer,t_ville *maVille)
     if(!police)
         allegro_message("Erreur chargement police");
 
-    //textprintf_ex(doublebuffer,police,190,90,makecol(253,108,158),0,"hey");
-    //textout_ex(doublebuffer,font,"hey",300,300,makecol(0,0,0),-1);
+    textprintf_ex(doublebuffer,police,330,120,makecol(0,0,0),-1,"%ld",maVille->argent);
+    textprintf_ex(doublebuffer,police,700,120,makecol(0,0,0),-1,"%d",maVille->nbr_mois_jeu);
+    textprintf_ex(doublebuffer,police,1100,120,makecol(0,0,0),-1,"%d",maVille->nbr_habitants);
+    //textprintf_ex(doublebuffer,police,650,120,makecol(0,0,0),-1,"%ld",maVille->argent);// eau?
+    //textprintf_ex(doublebuffer,police,850,120,makecol(0,0,0),-1,"%ld",maVille->argent);// elec?
+
+}
+
+void tothab(t_ville* maVille)
+{
+    int habtot=0;
+    for(int i=0; i<NB_LIGNES; i++)
+    {
+        for (int j = 0; j < NB_COLONNES; j++)
+        {
+            if(maVille->map[i][j].habitation->type==4 || maVille->map[i][j].habitation->type==2 || maVille->map[i][j].habitation->type==3 || maVille->map[i][j].habitation->type==1)
+            {
+                habtot+=maVille->map[i][j].habitation->nbr_hab;
+            }
+        }
+    }
+    maVille->nbr_habitants=habtot;
 }
