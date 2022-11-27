@@ -24,7 +24,6 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
     int niveauselec=0;// 0 pour normal, 1 pour l'eau, -1 pour elec
     int destructselec=0;// choisir de detruire ou pas
     ///Variables a base de structure///
-    t_case* case_temp=NULL;
 
     ///BITMAP///
     BITMAP* platjeu;
@@ -149,9 +148,6 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         masked_blit(platjeu,doublebuffer,0,0,0,0,1920,1080);
         afficherdonnees(doublebuffer,maVille);
 
-
-        /// Affichage coordonnées souris ///
-        //textprintf_ex(doublebuffer,font,3,0,makecol(255,255,255),makecol(0,0,0),"%d %d",mouse_x, mouse_y);
 
         ///boutons de selection///
 
@@ -315,7 +311,6 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
             textout_ex(doublebuffer,police,"PAUSE",650,540, makecol(255,255,255),-1);
         }
 
-
         //bouton suppr batiment
         if((mouse_y>976 && mouse_y<1074)&&(mouse_x>284 && mouse_x<346))
         {
@@ -468,10 +463,8 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
             }
         }
 
-        ///CALCUL DONNEES JOUEUR///
-        ingame = calcul_data_J(maVille, infos);
-        //tothab(maVille);
-
+         ///CALCUL DONNEES JOUEUR///
+         ingame = calcul_data_J(maVille, infos);
 
         ///QUITTER LE JEU///
         if(key[KEY_RCONTROL])//quitter le jeu (fin du prog)
@@ -481,7 +474,6 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         show_mouse(doublebuffer);
         blit(doublebuffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
         rest(10);
-
 
         ///PRISE DU TEMPS 2///
         clk2=clock()/CLOCKS_PER_SEC;
