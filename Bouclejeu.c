@@ -206,7 +206,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
                     destructselec=0;
                     batselected=1;
                 }
-                rest(5);
+                rest(50);
             }
         }
 
@@ -225,7 +225,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
                     destructselec=0;
                     batselected=2;
                 }
-                rest(5);
+                rest(50);
             }
         }
         //bouton placer chateau d'eau
@@ -243,7 +243,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
                     destructselec=0;
                     batselected=3;
                 }
-                rest(5);
+                rest(50);
             }
         }
         //bouton placer usine
@@ -261,7 +261,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
                     destructselec=0;
                     batselected=4;
                 }
-                rest(5);
+                rest(50);
             }
         }
 
@@ -270,7 +270,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         {
             if((mouse_b&1)==1)
             {
-                rest(5);
+                rest(50);
                 niveauselec=0;
             }
         }
@@ -279,7 +279,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         {
             if((mouse_b&1)==1)
             {
-                rest(5);
+                rest(50);
                 niveauselec=1;
             }
         }
@@ -288,7 +288,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         {
             if((mouse_b&1)==1)
             {
-                rest(5);
+                rest(50);
                 niveauselec=2;
             }
         }
@@ -298,7 +298,6 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         {
             if((mouse_b&1)==1)
             {
-                rest(5);
                 if(cmptpause==0)
                 {
                     cmptpause=1;
@@ -307,14 +306,21 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
                 {
                     cmptpause=0;
                 }
+                rest(50);
             }
         }
 
-        if((mouse_y>976 && mouse_y<1074)&&(mouse_x>284 && mouse_x<346))//bouton suppr batiment
+        if(cmptpause == 1)
+        {
+            textout_ex(doublebuffer,police,"PAUSE",960,540, makecol(0,0,0),-1);
+        }
+
+
+        //bouton suppr batiment
+        if((mouse_y>976 && mouse_y<1074)&&(mouse_x>284 && mouse_x<346))
         {
             if((mouse_b&1)==1)
             {
-                rest(5);
                 if(destructselec==0)
                 {
                     destructselec=1;
@@ -324,6 +330,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
                 {
                     destructselec=0;
                 }
+                rest(50);
             }
         }
 
