@@ -456,9 +456,10 @@ t_case* recherche_case_selec(t_ville* ville, int click_x, int click_y)
 
 void afficherdonnees(BITMAP* doublebuffer,t_ville *maVille)
 {
-    FONT *police = load_font("images/font/font1.pcx",NULL,NULL);
+    FONT *police = load_font("images/font/police.pcx",NULL,NULL);
     if(!police)
         allegro_message("Erreur chargement police");
 
-    //textprintf_ex(doublebuffer,police,190,90,makecol(253,108,158),-1,"hey");
+    //textprintf_ex(doublebuffer,police,190,90,makecol(253,108,158),0,"hey");
+    //textout_ex(doublebuffer);
 }
