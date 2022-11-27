@@ -314,7 +314,6 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
             }
         }
 
-
         ///INTERACTIONS JOUEUR///
         /*
         if((mouse_b&1)==1)    //Permet de savoir sur quelle icone le joueur a cliqué
@@ -359,8 +358,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
 
         batselected=poserbat(batselected,doublebuffer,maVille,maison,cabane,immeuble, gratteciel,usine,chateaudeau,route,infos);
         tothab(maVille);
-
-
+        detruirebat(maVille,destructselec);
 
         if(niveauselec==0)
         {
@@ -476,10 +474,8 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
             }
         }
 
-
          ///CALCUL DONNEES JOUEUR///
          ingame = calcul_data_J(maVille, infos);
-
 
         ///QUITTER LE JEU///
         if(key[KEY_RCONTROL])//quitter le jeu (fin du prog)
@@ -489,7 +485,6 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         show_mouse(doublebuffer);
         blit(doublebuffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
         rest(10);
-
 
         ///PRISE DU TEMPS 2///
         clk2=clock()/CLOCKS_PER_SEC;

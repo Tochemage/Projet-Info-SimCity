@@ -185,3 +185,57 @@ int isroute(int batselected, t_ville* maVille,int coord_x,int coord_y)
     }
     return 0;
 }
+
+void detruirebat(t_ville* maVille,int indestruct)
+{
+    if(indestruct==1)
+    {
+        for(int i=0;i<NB_LIGNES;i++)
+        {
+            for(int j=0;j<NB_COLONNES;j++)
+            {
+                if((mouse_y>234+i*20 && mouse_y<234+20+i*20)&&(mouse_x>740+j*20 && mouse_x<740+20+j*20) && maVille->map[i][j].habitation->type!=0 && maVille->map[i][j].habitation->type!=-1)
+                {
+                    if(maVille->map[i][j].habitation->type==1 || maVille->map[i][j].habitation->type==4 || maVille->map[i][j].habitation->type==2 || maVille->map[i][j].habitation->type==3)//cabane et autres hab
+                    {
+                        for(int k=0;k<3;k++)
+                        {
+
+                            for (int l = 0; l < 3; l++)
+                            {
+                                maVille->map[i+k][j+l].habitation->type=0;
+                            }
+                        }
+                        maVille->map[i][j].habitation->nbr_hab=0;
+                    }
+                    if(maVille->map[i][j].habitation->type==7)//route
+                    {
+                        maVille->map[i][j].habitation->type=0;
+                    }
+                    if(maVille->map[i][j].habitation->type==5)//usine
+                    {
+                        for (int k = 0; k < 4; k++)
+                        {
+                            for (int l = 0; l < 6; l++)
+                            {
+                                maVille->map[i + k][j + l].habitation->type = 0;
+                            }
+
+                        }
+                    }
+                    if(maVille->map[i][j].habitation->type==6)//chateau d'eau
+                    {
+                        for (int k = 0; k < 4; k++)
+                        {
+                            for (int l = 0; l < 6; l++)
+                            {
+                                maVille->map[i + l][j + k].habitation->type = 0;
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
