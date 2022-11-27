@@ -74,7 +74,7 @@ void sauvegardeJoueur(t_ville* ville)  //Mettre structure joueur en paramètre
                 fprintf(fichierMap, "%d\n", ville->map[i][j].habitation->nbr_hab);
                 fprintf(fichierMap, "%d\n", ville->map[i][j].industrie->num_bat);
                 fprintf(fichierMap, "%d\n", ville->map[i][j].industrie->type);
-                fprintf(fichierMap, "%s\n", ville->map[i][j].industrie->nom_bat);
+                fprintf(fichierMap, "%s\n\n", ville->map[i][j].industrie->nom_bat);
 
             }
         }
@@ -144,7 +144,7 @@ void chargementJoueur(t_ville* ville)      //Mettre structure joueur en paramèt
                 fscanf(fichierMap, "%d\n", &ville->map[i][j].habitation->nbr_hab);
                 fscanf(fichierMap, "%d\n", &ville->map[i][j].industrie->num_bat);
                 fscanf(fichierMap, "%d\n", &ville->map[i][j].industrie->type);
-                fscanf(fichierMap, "%s\n", ville->map[i][j].industrie->nom_bat);
+                fscanf(fichierMap, "%s\n\n", ville->map[i][j].industrie->nom_bat);
 
             }
         }
@@ -152,3 +152,57 @@ void chargementJoueur(t_ville* ville)      //Mettre structure joueur en paramèt
     }
 
 }
+
+
+
+
+
+
+
+/// SCENARIO ///
+
+//void
+
+
+
+
+
+
+/// EXEMPLE SAUVEGARDE ET CHARGEMENT ///
+
+//A copier dans le main juste après l'initialisation
+
+//Exemples sauvegarde et chargement
+//sauvegardeJoueur(ville);
+//chargementJoueur(ville);
+/*printf("%d\n", ville->map[0][0].num_case);
+printf("%d\n", ville->map[0][0].type_case);
+printf("%d\n", ville->map[0][0].num_color);
+printf("%d\n", ville->map[0][0].num_case_x);
+printf("%d\n", ville->map[0][0].num_case_y);
+printf("%s\n", ville->map[0][0].habitation->nom_bat);
+printf("%d\n", ville->map[0][0].habitation->num_bat);
+printf("%d\n", ville->map[0][0].habitation->type);
+printf("%d\n", ville->map[0][0].habitation->apport_eau);
+printf("%d\n", ville->map[0][0].habitation->apport_elec);
+printf("%d\n", ville->map[0][0].habitation->nbr_hab);
+printf("%d\n", ville->map[0][0].industrie->num_bat);
+printf("%d\n", ville->map[0][0].industrie->type);
+printf("%s\n", ville->map[0][0].industrie->nom_bat);
+
+printf("\n");
+
+printf("%d\n", ville->map[0][1].num_case);
+printf("%d\n", ville->map[0][1].type_case);
+printf("%d\n", ville->map[0][1].num_color);
+printf("%d\n", ville->map[0][1].num_case_x);
+printf("%d\n", ville->map[0][1].num_case_y);
+printf("%s\n", ville->map[0][1].habitation->nom_bat);
+printf("%d\n", ville->map[0][1].habitation->num_bat);
+printf("%d\n", ville->map[0][1].habitation->type);
+printf("%d\n", ville->map[0][1].habitation->apport_eau);
+printf("%d\n", ville->map[0][1].habitation->apport_elec);
+printf("%d\n", ville->map[0][1].habitation->nbr_hab);
+printf("%d\n", ville->map[0][1].industrie->num_bat);
+printf("%d\n", ville->map[0][1].industrie->type);
+printf("%s\n", ville->map[0][1].industrie->nom_bat);*/

@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <allegro.h>
 #include <time.h>
+#include <string.h>
 
 /**------------------------------------------------------------------------------------------------------------------**/
 /**------------------------------------------------------------------------------------------------------------------**/
@@ -127,9 +128,9 @@ typedef struct habitation
 
 typedef struct industrie
 {
+    char nom_bat[20];
     int num_bat;
     int type;           // 0:vide   6:chateau eau    7:Centrale electrique
-    char nom_bat[20];
 }t_industrie;
 
 typedef struct jeu_cases
