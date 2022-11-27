@@ -18,6 +18,48 @@ int calcul_data_J(t_ville* ville, t_infos* infos)      //Le programme va prendre
     int hab_immeuble=0;
     int hab_gratteCiel=0;
 
+    ///Remise à 0 des possessions///
+    ville->possesions.nb_chateauEau = 0;
+    ville->possesions.nb_centraleElec = 0;
+    ville->possesions.nb_terrainVague = 0;
+    ville->possesions.nb_cabane = 0;
+    ville->possesions.nb_maison = 0;
+    ville->possesions.nb_immeuble = 0;
+    ville->possesions.nb_gratteCiel = 0;
+
+    ///Calcul possessions///
+    for(int i=0; i<NB_LIGNES; i++)
+    {
+        for(int j=0; j<NB_COLONNES; j++)
+        {
+            if(ville->map[i][j].habitation->type == 1)
+            {
+                ville->possesions.nb_cabane++;
+            }
+            if(ville->map[i][j].habitation->type == 2)
+            {
+                ville->possesions.nb_maison++;
+            }
+            if(ville->map[i][j].habitation->type == 3)
+            {
+                ville->possesions.nb_immeuble++;
+            }
+            if(ville->map[i][j].habitation->type == 4)
+            {
+                ville->possesions.nb_gratteCiel++;
+            }
+            if(ville->map[i][j].habitation->type == 6)
+            {
+                ville->possesions.nb_chateauEau++;
+            }
+            if(ville->map[i][j].habitation->type == 5)
+            {
+                ville->possesions.nb_centraleElec++;
+            }
+
+        }
+    }
+
     ///Calcul nombre habitants///
     hab_terrainVague = ville->possesions.nb_terrainVague * infos->I_habitations.nb_hab_terrainVague;
     hab_cabane = ville->possesions.nb_cabane * infos->I_habitations.nb_hab_cabane;
@@ -40,14 +82,14 @@ int calcul_data_J(t_ville* ville, t_infos* infos)      //Le programme va prendre
     //Victoire
     if(ville->argent >= 50000000  ||  ville->nbr_habitants >= 50000)
     {
-        //Allegro : affichage victoire                                             NEED ALLEGRO
+        allegro_message("Bravo !!! Vous avez gagné, vous avez 50 000 000 ECEflouz ou 50 000 habitants");
         return 0;   //Mettre la variable ingame à 0 pour quitter la boucle de jeu
     }
 
     //Défaite
     if(ville->argent <= 0)
     {
-        //Allegro : affichage défaite                                               NEED ALLEGRO
+        allegro_message("Dommage... Vous avez perdu, vous n'avez plus d'argent");
         return 0;   //Mettre la variable ingame à 0 pour quitter la boucle de jeu
     }
 

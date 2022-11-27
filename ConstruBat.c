@@ -13,6 +13,7 @@
 int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* maison,BITMAP* cabane,BITMAP* immeuble,BITMAP* gratteciel,BITMAP* usine,BITMAP* chateaudeau,BITMAP* route, t_infos* mesInfos)
 {
     int yaroute=0;
+    int numero_bat=0;
     if(batselected==1)//bat
     {
         for(int i=0;i<40;i++)
@@ -35,10 +36,12 @@ int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* mais
                                     maVille->map[i+k][j+l].habitation->type = -1;
                                 }
                             }
-                            maVille->map[i][j].habitation->type=1;
+                            //maVille->map[i][j].habitation->type=2;      //cabane
+                            maVille->map[i][j].habitation->type=1;    //terrain vague mais cabane dans ce cas
                             maVille->map[i][j].habitation->nbr_hab=mesInfos->I_habitations.nb_hab_cabane;
-                            //maVille->map[i][j].habitation->num_bat=;
+                            //maVille->map[i][j].habitation->num_bat = numero_bat;
                             maVille->argent-= mesInfos->I_habitations.cout;
+
                             batselected=0;
                         }
                     }
