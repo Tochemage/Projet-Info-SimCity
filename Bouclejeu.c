@@ -298,6 +298,22 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
             }
         }
 
+        if((mouse_y>976 && mouse_y<1074)&&(mouse_x>284 && mouse_x<346))//bouton suppr batiment
+        {
+            if((mouse_b&1)==1)
+            {
+                rest(5);
+                if(destructselec==0)
+                {
+                    destructselec=1;
+                }
+                else
+                {
+                    destructselec=0;
+                }
+            }
+        }
+
 
         ///INTERACTIONS JOUEUR///
         /*
