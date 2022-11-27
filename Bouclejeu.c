@@ -312,7 +312,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
 
         if(cmptpause == 1)
         {
-            textout_ex(doublebuffer,police,"PAUSE",960,540, makecol(0,0,0),-1);
+            textout_ex(doublebuffer,police,"PAUSE",650,540, makecol(255,255,255),-1);
         }
 
 
@@ -332,6 +332,11 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
                 }
                 rest(50);
             }
+        }
+
+        if(destructselec == 1)
+        {
+            textout_ex(doublebuffer,police,"SUPPRIMER BATIMENT",400,540, makecol(255,255,255),-1);
         }
 
         if(key[KEY_P])
