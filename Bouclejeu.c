@@ -195,6 +195,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
                 }
                 else
                 {
+                    destructselec=0;
                     batselected=1;
                 }
                 rest(5);
@@ -213,6 +214,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
                 }
                 else
                 {
+                    destructselec=0;
                     batselected=2;
                 }
                 rest(5);
@@ -230,6 +232,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
                 }
                 else
                 {
+                    destructselec=0;
                     batselected=3;
                 }
                 rest(5);
@@ -247,6 +250,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
                 }
                 else
                 {
+                    destructselec=0;
                     batselected=4;
                 }
                 rest(5);
@@ -306,6 +310,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
                 if(destructselec==0)
                 {
                     destructselec=1;
+                    batselected=0;
                 }
                 else
                 {
@@ -572,7 +577,7 @@ void afficherdonnees(BITMAP* doublebuffer,t_ville *maVille)
     textprintf_ex(doublebuffer,police,330,120,makecol(0,0,0),-1,"%ld",maVille->argent);
     textprintf_ex(doublebuffer,police,700,120,makecol(0,0,0),-1,"%d",maVille->nbr_mois_jeu);
     textprintf_ex(doublebuffer,police,1042,120,makecol(0,0,0),-1,"%d",maVille->nbr_habitants);
-    textprintf_ex(doublebuffer,police,1715,129,makecol(0,0,0),-1,"%d",maVille->capa_elec);// eau?
+    textprintf_ex(doublebuffer,police,1315,129,makecol(0,0,0),-1,"%d",maVille->capa_eau);// eau?
     textprintf_ex(doublebuffer,police,1650,120,makecol(0,0,0),-1,"%d",maVille->capa_elec);// elec?
 
 }
