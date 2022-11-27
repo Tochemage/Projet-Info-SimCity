@@ -41,6 +41,11 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
     BITMAP* route_elec;
     BITMAP* route_eau;
 
+    ///Police///
+    FONT* police;
+
+    police=load_font("police.pcx", NULL, NULL);
+
     //Joueur
     int click_x=-1, click_y=-1, selection=-1;
 
@@ -197,12 +202,12 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
                     destructselec=0;
                     batselected=1;
                 }
-                rest(5);
+                rest(50);
             }
         }
 
         //bouton placer route
-        if((mouse_y>319 && mouse_y<383)&&(mouse_x>27 && mouse_x<346))
+        if((mouse_y>319 && mouse_y<383)&&(mouse_x>27 && mouse_x<346)&&cmptpause==0)
         {
             if(mouse_b & 1)
             {
@@ -216,11 +221,11 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
                     destructselec=0;
                     batselected=2;
                 }
-                rest(5);
+                rest(50);
             }
         }
         //bouton placer chateau d'eau
-        if((mouse_y>417 && mouse_y<481)&&(mouse_x>27 && mouse_x<346))
+        if((mouse_y>417 && mouse_y<481)&&(mouse_x>27 && mouse_x<346)&&cmptpause==0)
         {
             if((mouse_b&1)==1)
             {
@@ -234,11 +239,11 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
                     destructselec=0;
                     batselected=3;
                 }
-                rest(5);
+                rest(50);
             }
         }
         //bouton placer usine
-        if((mouse_y>511 && mouse_y<576)&&(mouse_x>27 && mouse_x<346))
+        if((mouse_y>511 && mouse_y<576)&&(mouse_x>27 && mouse_x<346)&&cmptpause==0)
         {
             if((mouse_b&1)==1)
             {
@@ -252,7 +257,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
                     destructselec=0;
                     batselected=4;
                 }
-                rest(5);
+                rest(50);
             }
         }
 
@@ -261,7 +266,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         {
             if((mouse_b&1)==1)
             {
-                rest(5);
+                rest(50);
                 niveauselec=0;
             }
         }
@@ -270,7 +275,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         {
             if((mouse_b&1)==1)
             {
-                rest(5);
+                rest(50);
                 niveauselec=1;
             }
         }
@@ -279,7 +284,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         {
             if((mouse_b&1)==1)
             {
-                rest(5);
+                rest(50);
                 niveauselec=2;
             }
         }
@@ -289,7 +294,6 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         {
             if((mouse_b&1)==1)
             {
-
                 if(cmptpause==0)
                 {
                     cmptpause=1;
@@ -298,8 +302,13 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
                 {
                     cmptpause=0;
                 }
-                rest(5);
+                rest(50);
             }
+        }
+
+        if(cmptpause == 1)
+        {
+            textout_ex(doublebuffer,police,"PAUSE",960,540, makecol(0,0,0),-1);
         }
 
         //bouton suppr batiment
@@ -307,7 +316,6 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         {
             if((mouse_b&1)==1)
             {
-                rest(5);
                 if(destructselec==0)
                 {
                     destructselec=1;
@@ -317,42 +325,9 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
                 {
                     destructselec=0;
                 }
-                rest(5);
+                rest(50);
             }
         }
-
-        ///INTERACTIONS JOUEUR///
-        /*
-        if((mouse_b&1)==1)    //Permet de savoir sur quelle icone le joueur a cliqué
-        {
-            ///Detection et analyse
-            click_x = mouse_x;
-            click_y = mouse_y;
-            //selection = detectionClick(click_x, click_y);
-            //(-1:Rien    0:Construire un batiment   1:Données bat  2:VisionEtage   3:Sauvegarde    4:quitter)
-
-            ///Appel des sous-programmes
-            if(selection==0)    //Construction batiment
-            {
-                //appel fonction constru bat en envoyant click_x et click_y pour detecter ensuite quel bat il veut construire
-            }
-            if(selection==1)    //Voir données batiment sur cette case
-            {
-
-            }
-            if(selection==2)    //Voir autres étages (eau, elec)
-            {
-                //appeler vision autres étages                                              NEED ALLEGRO
-            }
-            if(selection==3)
-            {
-                //Appeler programme de sauvegarde
-            }
-            if(selection==4)
-            {
-
-            }
-        }*/
 
         if(key[KEY_P])
         {
@@ -364,7 +339,9 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         }
 
         batselected=poserbat(batselected,doublebuffer,maVille,maison,cabane,immeuble, gratteciel,usine,chateaudeau,route,infos);
-        tothab(maVille);
+
+
+
         detruirebat(maVille,destructselec);
 
         if(niveauselec==0)
@@ -508,6 +485,63 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
 /**------------------------------------------------------------------------------------------------------------------**/
 
 /// SOUS-PROGRAMMES SERVANT A BOUCLE DE JEU ///
+
+
+t_case* recherche_case_selec(t_ville* ville, int click_x, int click_y)
+{
+    int i=0, j=0;
+    int indice_ligne=0, indice_colonne=0;
+    int lignes = NB_LIGNES;
+    int colonnes = NB_COLONNES;
+    t_case* case_recherchee;
+
+    for(i=0; i<lignes; i++)
+    {
+        for (j = 0; j < colonnes; j++)
+        {
+            if((click_x > ville->map[i][j].num_case_x) && (click_x < ville->map[i+1][j+1].num_case_x)  &&  (click_y > ville->map[i][j].num_case_y) && (click_y < ville->map[i+1][j+1].num_case_y))
+            {
+                case_recherchee = &ville->map[i][j];
+                return case_recherchee;
+            }
+        }
+    }
+    return NULL;
+}
+
+void afficherdonnees(BITMAP* doublebuffer,t_ville *maVille)
+{
+    FONT *police = load_font("images/font/police.pcx",NULL,NULL);
+    if(!police)
+        allegro_message("Erreur chargement police");
+
+    textprintf_ex(doublebuffer,police,330,120,makecol(0,0,0),-1,"%ld",maVille->argent);
+    textprintf_ex(doublebuffer,police,700,120,makecol(0,0,0),-1,"%d",maVille->nbr_mois_jeu);
+    textprintf_ex(doublebuffer,police,1042,120,makecol(0,0,0),-1,"%d",maVille->nbr_habitants);
+    textprintf_ex(doublebuffer,police,1315,129,makecol(0,0,0),-1,"%d",maVille->capa_elec);
+    textprintf_ex(doublebuffer,police,1650,120,makecol(0,0,0),-1,"%d",maVille->capa_eau);
+
+}
+
+void tothab(t_ville* maVille)
+{
+    int habtot=0;
+    for(int i=0; i<NB_LIGNES; i++)
+    {
+        for (int j = 0; j < NB_COLONNES; j++)
+        {
+            if(maVille->map[i][j].habitation->type==4 || maVille->map[i][j].habitation->type==2 || maVille->map[i][j].habitation->type==3 || maVille->map[i][j].habitation->type==1)
+            {
+                habtot+=maVille->map[i][j].habitation->nbr_hab;
+            }
+        }
+    }
+    maVille->nbr_habitants=habtot;
+}
+
+
+
+
 /*
 int detectionClick(int click_x, int click_y)    //Renvoie un entier permettant de savoir sur quoi le joueur a clique -> (-1:Rien    0:Construire un batiment   1:VisionEtage  2:Menu   3:Sauvegarde    4:quitter)
 
@@ -547,55 +581,35 @@ case_temp = recherche_case_selec(maVille, click_x, click_y);
 //BONUS Allegro : afficher les données de case_temp
 */
 
-
-t_case* recherche_case_selec(t_ville* ville, int click_x, int click_y)
+///INTERACTIONS JOUEUR///
+/*
+if((mouse_b&1)==1)    //Permet de savoir sur quelle icone le joueur a cliqué
 {
-    int i=0, j=0;
-    int indice_ligne=0, indice_colonne=0;
-    int lignes = NB_LIGNES;
-    int colonnes = NB_COLONNES;
-    t_case* case_recherchee;
+    ///Detection et analyse
+    click_x = mouse_x;
+    click_y = mouse_y;
+    //selection = detectionClick(click_x, click_y);
+    //(-1:Rien    0:Construire un batiment   1:Données bat  2:VisionEtage   3:Sauvegarde    4:quitter)
 
-    for(i=0; i<lignes; i++)
+    ///Appel des sous-programmes
+    if(selection==0)    //Construction batiment
     {
-        for (j = 0; j < colonnes; j++)
-        {
-            if((click_x > ville->map[i][j].num_case_x) && (click_x < ville->map[i+1][j+1].num_case_x)  &&  (click_y > ville->map[i][j].num_case_y) && (click_y < ville->map[i+1][j+1].num_case_y))
-            {
-                case_recherchee = &ville->map[i][j];
-                return case_recherchee;
-            }
-        }
+        //appel fonction constru bat en envoyant click_x et click_y pour detecter ensuite quel bat il veut construire
     }
-    return NULL;
-}
-
-void afficherdonnees(BITMAP* doublebuffer,t_ville *maVille)
-{
-    FONT *police = load_font("images/font/police.pcx",NULL,NULL);
-    if(!police)
-        allegro_message("Erreur chargement police");
-
-    textprintf_ex(doublebuffer,police,330,120,makecol(0,0,0),-1,"%ld",maVille->argent);
-    textprintf_ex(doublebuffer,police,700,120,makecol(0,0,0),-1,"%d",maVille->nbr_mois_jeu);
-    textprintf_ex(doublebuffer,police,1042,120,makecol(0,0,0),-1,"%d",maVille->nbr_habitants);
-    textprintf_ex(doublebuffer,police,1315,129,makecol(0,0,0),-1,"%d",maVille->capa_eau);// eau?
-    textprintf_ex(doublebuffer,police,1650,120,makecol(0,0,0),-1,"%d",maVille->capa_elec);// elec?
-
-}
-
-void tothab(t_ville* maVille)
-{
-    int habtot=0;
-    for(int i=0; i<NB_LIGNES; i++)
+    if(selection==1)    //Voir données batiment sur cette case
     {
-        for (int j = 0; j < NB_COLONNES; j++)
-        {
-            if(maVille->map[i][j].habitation->type==4 || maVille->map[i][j].habitation->type==2 || maVille->map[i][j].habitation->type==3 || maVille->map[i][j].habitation->type==1)
-            {
-                habtot+=maVille->map[i][j].habitation->nbr_hab;
-            }
-        }
+
     }
-    maVille->nbr_habitants=habtot;
-}
+    if(selection==2)    //Voir autres étages (eau, elec)
+    {
+        //appeler vision autres étages                                              NEED ALLEGRO
+    }
+    if(selection==3)
+    {
+        //Appeler programme de sauvegarde
+    }
+    if(selection==4)
+    {
+
+    }
+}*/

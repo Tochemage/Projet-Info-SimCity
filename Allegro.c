@@ -63,6 +63,7 @@ void AllegroInit()
     }
 
     install_sound(DIGI_AUTODETECT, MIDI_AUTODETECT, 0);
+    show_mouse(screen);
 
     enable_hardware_cursor();
 }
