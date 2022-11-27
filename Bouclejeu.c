@@ -24,7 +24,6 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
     int niveauselec=0;// 0 pour normal, 1 pour l'eau, -1 pour elec
     int destructselec=0;// choisir de detruire ou pas
     ///Variables a base de structure///
-    t_case* case_temp=NULL;
 
     ///BITMAP///
     BITMAP* platjeu;
@@ -290,7 +289,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         {
             if((mouse_b&1)==1)
             {
-                rest(5);
+
                 if(cmptpause==0)
                 {
                     cmptpause=1;
@@ -299,10 +298,12 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
                 {
                     cmptpause=0;
                 }
+                rest(5);
             }
         }
 
-        if((mouse_y>976 && mouse_y<1074)&&(mouse_x>284 && mouse_x<346))//bouton suppr batiment
+        //bouton suppr batiment
+        if((mouse_y>976 && mouse_y<1074)&&(mouse_x>284 && mouse_x<346))
         {
             if((mouse_b&1)==1)
             {
@@ -316,6 +317,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
                 {
                     destructselec=0;
                 }
+                rest(5);
             }
         }
 
