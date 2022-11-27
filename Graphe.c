@@ -591,3 +591,278 @@ void recherchecaseinverse(int n,t_ville v,int* x1,int* y1)
         }
     }
 }
+void modifgraph(t_ville* ville,int x,int y)
+{
+    //copy a txt file in another txt file
+    FILE *fichier = fopen("graphe.txt", "r");
+    FILE *fichier2 = fopen("graphe2.txt", "w+");
+    if (fichier != NULL)
+    {
+        int nbSommet;
+        int nbArretes;
+        int r;
+        int s1;
+        int s2;
+        if(isroute(2,ville,x,y)==2 ||isroute(2,ville,x,y)==3||isroute(2,ville,x,y)==3||isroute(2,ville,x,y)==4 ) // au dessus 2 en dessous 3 a gauche 4 a droite 5
+        {
+            fscanf(fichier, "%d", &nbSommet);
+            nbSommet += 1;
+            fprintf(fichier2, "%d\n", nbSommet);
+            fscanf(fichier, "%d", &nbArretes);
+            nbArretes += 1;
+            fprintf(fichier2, "%d\n", nbArretes);
+            fscanf(fichier, "%d", &r);
+            fprintf(fichier2, "%d\n", r);
+            for (int i = 0; i < nbArretes - 1; i++)
+            {
+                fscanf(fichier, "%d %d", &s1, &s2);
+                fprintf(fichier2, "%d %d\n", s1, s2);
+            }
+            if (isroute(2,ville,x,y)==2)
+            {
+                fprintf(fichier2, "%d %d\n", ville->map[x][y].num_case, ville->map[x][y-1].num_case);
+            }
+            if (isroute(2,ville,x,y)==3)
+            {
+                fprintf(fichier2, "%d %d\n", ville->map[x][y].num_case, ville->map[x][y+1].num_case);
+            }
+            if (isroute(2,ville,x,y)==4)
+            {
+                fprintf(fichier2, "%d %d\n", ville->map[x][y].num_case, ville->map[x-1][y].num_case);
+            }
+            if (isroute(2,ville,x,y)==5)
+            {
+                fprintf(fichier2, "%d %d\n", ville->map[x][y].num_case, ville->map[x+1][y].num_case);
+            }
+        }
+        else
+        {
+            fscanf(fichier, "%d", &nbSommet);
+            nbSommet += 1;
+            fprintf(fichier2, "%d\n", nbSommet);
+            fscanf(fichier, "%d", &nbArretes);
+            nbArretes += 1;
+            fprintf(fichier2, "%d\n", nbArretes);
+            fscanf(fichier, "%d", &r);
+            fprintf(fichier2, "%d\n", r);
+            fprintf(fichier2, "%d %d\n", ville->map[x][y].num_case, ville->map[x][y].num_case);
+        }
+        fclose(fichier);
+        fclose(fichier2);
+        copy_file("graphe2.txt", "graphe.txt");
+    }
+
+}
+
+//cette fonction permet de copier le contenu d'un fichier text dans un autre
+void copy_file(char *source, char *dest)
+{
+    FILE *f1 = fopen(source, "r");
+    FILE *f2 = fopen(dest, "w+");
+    char c;
+    while ((c = fgetc(f1)) != EOF)
+    {
+        fputc(c, f2);
+    }
+    fclose(f1);
+    fclose(f2);
+}
+
+int isgenerateur(t_ville ville)
+{
+    int nbSommet = 0;
+    int nbgenerateurs = 0;
+    int x1,y1,x2,y2=0;
+    int **G = chargerGraphe(&nbSommet);
+    for (int i = 0; i < nbSommet; i++)
+    {
+        for (int j = 0; j < nbSommet; j++)
+        {
+            if (G[i][j] == 1)
+            {
+                recherchecaseinverse(i,ville,&x1,&y1);
+                recherchecaseinverse(j,ville,&x2,&y2);
+                if (ville.map[x1][y1+1].industrie->type == 7 && ville.map[x2][y2+1].industrie->type != 7)
+                {
+                    nbgenerateurs += 1;
+                }
+                if (ville.map[x1][y1-1].industrie->type == 7 && ville.map[x2][y2-1].industrie->type != 7)
+                {
+                    nbgenerateurs += 1;
+                }
+                if (ville.map[x1+1][y1].industrie->type == 7 && ville.map[x2+1][y2].industrie->type != 7)
+                {
+                    nbgenerateurs += 1;
+                }
+                if (ville.map[x1-1][y1].industrie->type == 7 && ville.map[x2-1][y2].industrie->type != 7)
+                {
+                    nbgenerateurs += 1;
+                }
+                if (ville.map[x1][y1+1].industrie->type != 7 && ville.map[x2][y2+1].industrie->type == 7)
+                {
+                    nbgenerateurs += 1;
+                }
+                if (ville.map[x1][y1-1].industrie->type != 7 && ville.map[x2][y2-1].industrie->type == 7)
+                {
+                    nbgenerateurs += 1;
+                }
+                if (ville.map[x1+1][y1].industrie->type != 7 && ville.map[x2+1][y2].industrie->type == 7)
+                {
+                    nbgenerateurs += 1;
+                }
+                if (ville.map[x1-1][y1].industrie->type != 7 && ville.map[x2-1][y2].industrie->type == 7)
+                {
+                    nbgenerateurs += 1;
+                }
+            }
+        }
+    }
+    return nbgenerateurs;
+}
+
+int isballoneau(t_ville ville)
+{
+    int nbSommet = 0;
+    int nbballoneau = 0;
+    int x1,y1,x2,y2=0;
+    int **G = chargerGraphe(&nbSommet);
+    for (int i = 0; i < nbSommet; i++)
+    {
+        for (int j = 0; j < nbSommet; j++)
+        {
+            if (G[i][j] == 1)
+            {
+                recherchecaseinverse(i,ville,&x1,&y1);
+                recherchecaseinverse(j,ville,&x2,&y2);
+                if (ville.map[x1][y1+1].industrie->type == 6 && ville.map[x2][y2+1].industrie->type != 6)
+                {
+                    nbballoneau += 1;
+                }
+                if (ville.map[x1][y1-1].industrie->type == 6 && ville.map[x2][y2-1].industrie->type != 6)
+                {
+                    nbballoneau += 1;
+                }
+                if (ville.map[x1+1][y1].industrie->type == 6 && ville.map[x2+1][y2].industrie->type != 6)
+                {
+                    nbballoneau += 1;
+                }
+                if (ville.map[x1-1][y1].industrie->type == 6 && ville.map[x2-1][y2].industrie->type != 6)
+                {
+                    nbballoneau += 1;
+                }
+                if (ville.map[x1][y1+1].industrie->type != 6 && ville.map[x2][y2+1].industrie->type == 6)
+                {
+                    nbballoneau += 1;
+                }
+                if (ville.map[x1][y1-1].industrie->type != 6 && ville.map[x2][y2-1].industrie->type == 6)
+                {
+                    nbballoneau += 1;
+                }
+                if (ville.map[x1+1][y1].industrie->type != 6 && ville.map[x2+1][y2].industrie->type == 6)
+                {
+                    nbballoneau += 1;
+                }
+                if (ville.map[x1-1][y1].industrie->type != 6 && ville.map[x2-1][y2].industrie->type == 6)
+                {
+                    nbballoneau += 1;
+                }
+            }
+        }
+    }
+    return nbballoneau;
+}
+
+void distributionelec(t_ville* ville)
+{
+    int nbgenerateur,x1,y1,x2,y2,nbhabtitation,distribelecpar=0;
+    int nbSommet = 0;
+    nbgenerateur = isgenerateur(*ville);
+    int **G = chargerGraphe(&nbSommet);
+    for (int i = O;i<nbSommet;i++)
+    {
+        for (int j = 0; j < nbSommet; j++)
+        {
+            if (G[i][j] == 1)
+            {
+                recherchecaseinverse(i,*ville,&x1,&y1);
+                recherchecaseinverse(j,*ville,&x2,&y2);
+                if (ville->map[x1][y1+1].habitation == NULL   && ville->map[x2][y2+1].habitation == NULL )
+                {
+                   nbhabtitation+= 1;
+                }
+                if (ville->map[x1][y1-1].habitation == NULL   && ville->map[x2][y2-1].habitation == NULL )
+                {
+                    nbhabtitation+= 1;
+                }
+                if (ville->map[x1+1][y1].habitation == NULL   && ville->map[x2+1][y2].habitation == NULL )
+                {
+                    nbhabtitation+= 1;
+                }
+                if (ville->map[x1-1][y1].habitation == NULL   && ville->map[x2-1][y2].habitation == NULL )
+                {
+                    nbhabtitation+= 1;
+                }
+                if (ville->map[x1][y1+1].habitation != NULL   && ville->map[x2][y2+1].habitation == NULL )
+                {
+                    nbhabtitation+= 1;
+                }
+                if (ville->map[x1][y1-1].habitation != NULL   && ville->map[x2][y2-1].habitation == NULL )
+                {
+                    nbhabtitation+= 1;
+                }
+                if (ville->map[x1+1][y1].habitation != NULL   && ville->map[x2+1][y2].habitation == NULL )
+                {
+                    nbhabtitation+= 1;
+                }
+                if (ville->map[x1-1][y1].habitation != NULL   && ville->map[x2-1][y2].habitation == NULL )
+                {
+                    nbhabtitation+= 1;
+                }
+            }
+        }
+    }
+    distribelecpar = nbhabtitation/nbgenerateur;
+    for (int i = O;i<nbSommet;i++)
+    {
+        for (int j = 0; j < nbSommet; j++)
+        {
+            if (G[i][j] == 1)
+            {
+                recherchecaseinverse(i,*ville,&x1,&y1);
+                recherchecaseinverse(j,*ville,&x2,&y2);
+                if (ville->map[x1][y1+1].habitation == NULL   && ville->map[x2][y2+1].habitation == NULL )
+                {
+                    nbhabtitation+= 1;
+                }
+                if (ville->map[x1][y1-1].habitation == NULL   && ville->map[x2][y2-1].habitation == NULL )
+                {
+                    nbhabtitation+= 1;
+                }
+                if (ville->map[x1+1][y1].habitation == NULL   && ville->map[x2+1][y2].habitation == NULL )
+                {
+                    nbhabtitation+= 1;
+                }
+                if (ville->map[x1-1][y1].habitation == NULL   && ville->map[x2-1][y2].habitation == NULL )
+                {
+                    nbhabtitation+= 1;
+                }
+                if (ville->map[x1][y1+1].habitation != NULL   && ville->map[x2][y2+1].habitation == NULL )
+                {
+                    nbhabtitation+= 1;
+                }
+                if (ville->map[x1][y1-1].habitation != NULL   && ville->map[x2][y2-1].habitation == NULL )
+                {
+                    nbhabtitation+= 1;
+                }
+                if (ville->map[x1+1][y1].habitation != NULL   && ville->map[x2+1][y2].habitation == NULL )
+                {
+                    nbhabtitation+= 1;
+                }
+                if (ville->map[x1-1][y1].habitation != NULL   && ville->map[x2-1][y2].habitation == NULL )
+                {
+                    nbhabtitation+= 1;
+                }
+            }
+        }
+    }
+}

@@ -221,6 +221,8 @@ int **chargerGraphe(int *nbSommet);
 ///SAUVEGARDE///
 void sauvegardeJoueur(t_ville* ville);
 void chargementJoueur(t_ville* ville);
+void modifgraph(t_ville* ville,int x,int y);
+void copy_file(char *source, char *dest);
 
 
 #endif //V1_HEADER_H

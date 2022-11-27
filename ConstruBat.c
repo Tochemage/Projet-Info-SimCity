@@ -59,6 +59,7 @@ int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* mais
                     if((mouse_b&1)==1 && maVille->map[i][j].habitation->type==0 && mesInfos->I_routes.cout<maVille->argent)
                     {
                         maVille->map[i][j].habitation->type = 7;
+                        modifgraph(maVille,i,j);
                         maVille->argent-=mesInfos->I_routes.cout;
                         //batselected = 0;
                     }
