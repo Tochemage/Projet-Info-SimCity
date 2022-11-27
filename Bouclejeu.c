@@ -467,8 +467,8 @@ void afficherdonnees(BITMAP* doublebuffer,t_ville *maVille)
 
     textprintf_ex(doublebuffer,police,330,120,makecol(0,0,0),-1,"%ld",maVille->argent);
     textprintf_ex(doublebuffer,police,700,120,makecol(0,0,0),-1,"%d",maVille->nbr_mois_jeu);
-    textprintf_ex(doublebuffer,police,1100,120,makecol(0,0,0),-1,"%d",maVille->nbr_habitants);
-    textprintf_ex(doublebuffer,police,1350,120,makecol(0,0,0),-1,"%d",maVille->capa_elec);// eau?
+    textprintf_ex(doublebuffer,police,1042,120,makecol(0,0,0),-1,"%d",maVille->nbr_habitants);
+    textprintf_ex(doublebuffer,police,1715,129,makecol(0,0,0),-1,"%d",maVille->capa_elec);// eau?
     textprintf_ex(doublebuffer,police,1650,120,makecol(0,0,0),-1,"%d",maVille->capa_elec);// elec?
 
 }
