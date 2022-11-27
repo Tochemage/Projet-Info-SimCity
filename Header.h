@@ -208,7 +208,11 @@ int poserbat(int batselected,BITMAP* doublebuffer, t_ville* maVille,BITMAP* mais
 //Calcul data joueur
 int calcul_data_J(t_ville* ville, t_infos* infos);
 
-
+//graphs
+int calculdistance(t_ville* maVille,t_infos* mesInfos);
+void DFS(int i, int *visited, int **G, int nbSommet,t_ville v,int* tab);
+void recherchecaseinverse(int n,t_ville v,int* x1,int* y1);
+int **chargerGraphe(int *nbSommet);
 ///SAUVEGARDE///
 void sauvegardeJoueur(t_ville* ville);
 void chargementJoueur(t_ville* ville);

@@ -4,7 +4,7 @@
 
 
 #include "Header.h"
-
+#include "math.h"
 ////////////////////////////
 ///PROGRAMME DES GRAPHES///
 //////////////////////////
@@ -497,3 +497,97 @@ typedef struct _cellule* Cellule;
 #endif // CELLULE_H_INCLUDED
 
  */
+//nous allons chercher l'heuristic de deux coordonnées
+//nous allons donc utiliser la distance heuristique euclidienne
+
+int Astar(t_ville ville, int click_x, int click_y)
+{
+    t_case* c1 = NULL;
+    c1 = recherche_case_selec(&ville, click_x, click_y);
+    int tab,x1,y1,x2,y2;
+    x1 = c1->num_case_x;
+    y1 = c1->num_case_y;
+    int s = c1->num_case;
+    int nbSommet = 0;
+    int **G = chargerGraphe(&nbSommet);
+    int *visited = calloc(nbSommet, sizeof(int));
+    DFS(s, visited, G, nbSommet,ville,&tab);
+    for (int i = 0; i < nbSommet; i++)
+    {
+        free(G[i]);
+    }
+    free(G);
+
+    free(visited);
+    recherchecaseinverse(tab,ville,&x2,&y2);
+    //distance de manhattan
+    return abs(x1 - x2) + abs(y1 - y2);
+}
+
+void DFS(int i, int *visited, int **G, int nbSommet,t_ville v,int* tab)
+{
+    int j,x1,y1;
+    visited[i] = 1;
+    recherchecaseinverse(i,v,&x1,&y1);
+    if(v.map[x1][y1].industrie->type==6)
+    {
+        *tab = i;
+    }
+    for (j = 0; j < nbSommet; j++)
+    {
+        if (G[i][j] == 1 && visited[j] == 0)
+        {
+            DFS(j, visited, G, nbSommet,v,tab);
+        }
+    }
+}
+
+int **chargerGraphe(int *nbSommet)
+{
+    FILE *fichier = fopen("graphe.txt", "r");
+    if (fichier != NULL)
+    {
+        fscanf(fichier, "%d", nbSommet);
+
+        int nbArretes;
+        fscanf(fichier, "%d", &nbArretes);
+
+        int r;
+        fscanf(fichier, "%d", &r);
+
+        int **G = calloc(*nbSommet, sizeof(int *));
+        for (int i = 0; i < *nbSommet; i++)
+        {
+            G[i] = calloc(*nbSommet, sizeof(int));
+        }
+
+        int s1;
+        int s2;
+
+        for (int i = 0; i < nbArretes; i++)
+        {
+            fscanf(fichier, "%d %d", &s1, &s2);
+            G[s1][s2] = 1;
+            G[s2][s1] = 1;
+        }
+        fclose(fichier);
+        return G;
+    }
+    printf("ereur");
+    return NULL;
+}
+
+void recherchecaseinverse(int n,t_ville v,int* x1,int* y1)
+{
+    for (int i = 0; i < NB_LIGNES; i++)
+    {
+        for (int j = 0; j < NB_COLONNES; j++)
+        {
+            if (v.map[i][j].num_case == n)
+            {
+                *x1 = i;
+                *y1 = j;
+            }
+        }
+    }
+}
