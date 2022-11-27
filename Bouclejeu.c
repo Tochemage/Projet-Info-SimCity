@@ -173,6 +173,8 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
             {
                 //save partie on appelle un sous prog qui enregistre tout
                 sauvegardeJoueur(maVille);
+                textout_ex(screen,police,"SAUVEGARDE EFFECTUEE",400,540, makecol(255,255,255),-1);
+                rest(1000);
             }
         }
         //bouton quitter

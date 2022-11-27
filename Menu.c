@@ -331,10 +331,9 @@ void menu(BITMAP* doublebuffer, int *startgame,t_ville* ville)
             case 2:
             {
                 //charger une sauvegarde
-                if(key[KEY_E])
-                {
-                    undermenu=0;
-                }
+                chargementJoueur(ville);
+                *startgame=1;
+                undermenu=6;
                 break;
             }
             case 3:
