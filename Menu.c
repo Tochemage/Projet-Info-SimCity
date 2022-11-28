@@ -369,6 +369,7 @@ void menu(BITMAP* doublebuffer, int *startgame,t_ville* ville)
                     numregle=0;
                     undermenu=0;
                 }
+
                 break;
 
             }

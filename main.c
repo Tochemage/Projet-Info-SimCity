@@ -19,6 +19,16 @@ int main()
     int ingame=0;
     int *startgame=NULL;
     startgame=&ingame;
+    BITMAP* loading;
+
+    loading = load_bitmap("images/menu/regle/loading.bmp",NULL);
+    if (!loading)
+    {
+        allegro_message("pas pu trouver logo");
+        exit(EXIT_FAILURE);
+    }
+
+    draw_sprite(screen,loading,0,0);
 
 
     ///Initialisations///
