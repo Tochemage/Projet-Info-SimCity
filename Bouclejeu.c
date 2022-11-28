@@ -143,10 +143,22 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
 
             //printf("%d\n",cmptmois);
             clktot=0;
+
+            //Montrer évolution
+            for(int i=0; i<NB_LIGNES; i++)
+            {
+                for(int j=0; j<NB_COLONNES; j++)
+                {
+                    maVille->map[i][j].habitation->apport_eau += 50;
+                    maVille->map[i][j].habitation->apport_elec += 50;
+                }
+            }
         }
         blit(fondjeu,doublebuffer,0,0,0,0,1920,1080);
         masked_blit(platjeu,doublebuffer,0,0,0,0,1920,1080);
         afficherdonnees(doublebuffer,maVille);
+
+        //distributionelec(maVille);
 
 
         ///boutons de selection///
@@ -190,7 +202,7 @@ void bouclejeu(BITMAP* doublebuffer, t_ville* maVille, t_infos* infos, int* star
         }
 
         //bouton placer bat
-        if((mouse_y>222 && mouse_y<286)&&(mouse_x>27 && mouse_x<346))
+        if((mouse_y>222 && mouse_y<286)&&(mouse_x>27 && mouse_x<346)&&cmptpause==0)
         {
             if((mouse_b&1)==1)
             {

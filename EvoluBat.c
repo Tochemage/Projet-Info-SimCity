@@ -7,9 +7,9 @@
 
 void canevolve(t_ville* maVille, t_infos* infos)
 {
-    for(int i=0;i<40;i++)
+    for(int i=0;i<NB_LIGNES;i++)
     {
-        for(int j=0;j<40;j++)
+        for(int j=0;j<NB_COLONNES;j++)
         {
             if(maVille->map[i][j].habitation->type==1 || maVille->map[i][j].habitation->type==2 || maVille->map[i][j].habitation->type==3)
             {
@@ -44,9 +44,9 @@ void canevolve(t_ville* maVille, t_infos* infos)
 
 void devolve(t_ville* maVille, t_infos* infos)
 {
-    for(int i=0;i<40;i++)
+    for(int i=0;i<NB_LIGNES;i++)
     {
-        for(int j=0;j<40;j++)
+        for(int j=0;j<NB_COLONNES;j++)
         {
             if(maVille->map[i][j].habitation->type==4 || maVille->map[i][j].habitation->type==2 || maVille->map[i][j].habitation->type==3)
             {

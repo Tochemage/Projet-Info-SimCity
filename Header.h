@@ -223,6 +223,7 @@ void sauvegardeJoueur(t_ville* ville);
 void chargementJoueur(t_ville* ville);
 void modifgraph(t_ville* ville,int x,int y);
 void copy_file(char *source, char *dest);
+void distributionelec(t_ville* ville);
 
 
 #endif //V1_HEADER_H

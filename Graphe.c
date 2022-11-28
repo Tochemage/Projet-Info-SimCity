@@ -774,7 +774,8 @@ int isballoneau(t_ville ville)
 
 void distributionelec(t_ville* ville)
 {
-    int nbgenerateur,x1,y1,x2,y2,nbhabtitation,distribelecpar=0;
+    int nbgenerateur,x1,y1,x2,y2;
+    int nbhabtitation=0,distribelecpar=0;
     int nbSommet = 0;
     nbgenerateur = isgenerateur(*ville);
     int **G = chargerGraphe(&nbSommet);
@@ -786,25 +787,9 @@ void distributionelec(t_ville* ville)
             {
                 recherchecaseinverse(i,*ville,&x1,&y1);
                 recherchecaseinverse(j,*ville,&x2,&y2);
-                if (ville->map[x1][y1+1].habitation == NULL   && ville->map[x2][y2+1].habitation == NULL )
-                {
-                   nbhabtitation+= 1;
-                }
-                if (ville->map[x1][y1-1].habitation == NULL   && ville->map[x2][y2-1].habitation == NULL )
-                {
-                    nbhabtitation+= 1;
-                }
-                if (ville->map[x1+1][y1].habitation == NULL   && ville->map[x2+1][y2].habitation == NULL )
-                {
-                    nbhabtitation+= 1;
-                }
-                if (ville->map[x1-1][y1].habitation == NULL   && ville->map[x2-1][y2].habitation == NULL )
-                {
-                    nbhabtitation+= 1;
-                }
                 if (ville->map[x1][y1+1].habitation != NULL   && ville->map[x2][y2+1].habitation == NULL )
                 {
-                    nbhabtitation+= 1;
+                   nbhabtitation+= 1;
                 }
                 if (ville->map[x1][y1-1].habitation != NULL   && ville->map[x2][y2-1].habitation == NULL )
                 {
@@ -815,6 +800,22 @@ void distributionelec(t_ville* ville)
                     nbhabtitation+= 1;
                 }
                 if (ville->map[x1-1][y1].habitation != NULL   && ville->map[x2-1][y2].habitation == NULL )
+                {
+                    nbhabtitation+= 1;
+                }
+                if (ville->map[x1][y1+1].habitation == NULL   && ville->map[x2][y2+1].habitation != NULL )
+                {
+                    nbhabtitation+= 1;
+                }
+                if (ville->map[x1][y1-1].habitation == NULL   && ville->map[x2][y2-1].habitation != NULL )
+                {
+                    nbhabtitation+= 1;
+                }
+                if (ville->map[x1+1][y1].habitation == NULL   && ville->map[x2+1][y2].habitation != NULL )
+                {
+                    nbhabtitation+= 1;
+                }
+                if (ville->map[x1-1][y1].habitation == NULL   && ville->map[x2-1][y2].habitation != NULL )
                 {
                     nbhabtitation+= 1;
                 }
@@ -853,18 +854,22 @@ void distributionelec(t_ville* ville)
                 if (ville->map[x1][y1+1].habitation != NULL   && ville->map[x2][y2+1].habitation == NULL )
                 {
                     ville->map[x1][y1+1].habitation->apport_elec=distribelecpar;
+                    ville->map[x1][y1+1].habitation->apport_eau=distribelecpar;
                 }
                 if (ville->map[x1][y1-1].habitation != NULL   && ville->map[x2][y2-1].habitation == NULL )
                 {
                     ville->map[x1][y1-1].habitation->apport_elec=distribelecpar;
+                    ville->map[x1][y1-1].habitation->apport_eau=distribelecpar;
                 }
                 if (ville->map[x1+1][y1].habitation != NULL   && ville->map[x2+1][y2].habitation == NULL )
                 {
                     ville->map[x1+1][y1].habitation->apport_elec=distribelecpar;
+                    ville->map[x1+1][y1].habitation->apport_eau=distribelecpar;
                 }
                 if (ville->map[x1-1][y1].habitation != NULL   && ville->map[x2-1][y2].habitation == NULL )
                 {
                     ville->map[x1-1][y1].habitation->apport_elec=distribelecpar;
+                    ville->map[x1-1][y1].habitation->apport_eau=distribelecpar;
                 }
             }
         }
